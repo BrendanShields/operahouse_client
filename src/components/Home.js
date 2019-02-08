@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 
 const Home = () => {
 
@@ -10,6 +10,9 @@ return (
       <button onClick={() => setCount(count + 1)}>
         Click me
       </button>
+      <nav> This is a NavBar </nav>
+      <h1> Welcome to the Opera House! </h1>
+      <h2> Slider </h2>
     </div>
   );
 }
