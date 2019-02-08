@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Categories from './components/Categories';
 import Slider from './components/Slider';
 import * as serviceWorker from './serviceWorker';
-
+import Routes from './Routes'
 
 ReactDOM.render(< Routes />, document.getElementById('root'));
 
