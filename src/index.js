@@ -4,8 +4,6 @@ import './index.css';
 import Home from './components/Home';
 import Categories from './components/Categories';
 import Slider from './components/Slider';
-import Comics from './components/Comics';
-import Routes from './Routes'
 import * as serviceWorker from './serviceWorker';
 
 
