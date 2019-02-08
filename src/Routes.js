@@ -5,10 +5,9 @@ import Home from './components/Home';
 import Categories from './components/Categories';
 import Events from './components/Events';
 
-
 const routes = [
     {
-        path: "/",
+        path: "/home",
         component: Home
     },
     {
@@ -16,7 +15,7 @@ const routes = [
         component: Categories,
         routes: [
             {
-                path: "/categories/:genre",
+                path: "/events/:genre",
                 component: Events
             }
         ]
@@ -37,16 +36,33 @@ const Routes = () => (
         <div>
             <ul>
                 <li>
-                    <Link to="/">Home</Link>
+                    <OldMenuLink activeOnlyWhenExact={true} to="/home" label="Home" />
                 </li>
                 <li>
-                    <Link to="/categories">Categories</Link>
+                    <OldMenuLink to="/categories" label="Categories" />
                 </li>
             </ul>
-
+            <hr />
             {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
         </div>
     </Router>
 );
 
+<<<<<<< HEAD
 export default Routes;
+=======
+const OldMenuLink = ({ label, to, activeOnlyWhenExact }) => (
+    <Route
+        path={to}
+        exact={activeOnlyWhenExact}
+        children={({ match }) => (
+            <div className={match ? "active" : ""}>
+                {match ? "> " : ""}
+                <Link to={to}>{label}</Link>
+            </div>
+        )}
+    />
+);
+
+export default Routes;
+>>>>>>> 18f4aaa775eb246ec1a363dae8d1f80d599c7088

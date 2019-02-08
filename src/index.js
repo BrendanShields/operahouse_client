@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Home from './components/Home';
-import Categories from './components/Categories';
 import Slider from './components/Slider';
+import Categories from './components/Categories';
+import Events from './components/Events';
 import * as serviceWorker from './serviceWorker';
 import Routes from './Routes'
 
-ReactDOM.render(< Routes />, document.getElementById('root'));
+ReactDOM.render(<Routes />, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

@@ -4,7 +4,6 @@ import Slider from './Slider';
 
 const Home = () => {
 
-
 return (
     <div>
       <h1> Welcome to the Opera House! </h1>

@@ -1,33 +1,27 @@
 import React, { useState, Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-const Categories = ({ routes }) => (
+const Categories = () => (
     <div>
         <h2>Categories</h2>
         <ul>
             <li>
-                <Link to="/categories/drama">Drama</Link>
+                <Link to="/events/dance">Dance</Link>
             </li>
             <li>
-                <Link to="/categories/comics">Comics</Link>
+                <Link to="/events/opera">Opera</Link>
             </li>
             <li>
-                <Link to="/categories/action">Action</Link>
+                <Link to="/events/classical-music">Classical Music</Link>
             </li>
+            <li>
+                <Link to="/events/kids-and-families">Kids & Families</Link>
+            </li>
+            
         </ul>
 
-        { routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />) }
     </div >
 );
 
-const RouteWithSubRoutes = route => (
-    <Route
-        path={route.path}
-        render={props => (
-            // pass the sub-routes down to keep nesting
-            <route.component {...props} routes={route.routes} />
-        )}
-    />
-);
 
 export default Categories;
