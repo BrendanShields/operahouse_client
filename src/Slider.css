@@ -1,0 +1,44 @@
+canvas {
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.prism-slider {
+  width: 1200px;
+  max-width: 100%;
+  height: 0;
+  padding-bottom: 48%;
+  position: relative;
+}
+
+.prism-slider canvas {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.navigation {
+  width: 100%;
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+  list-style: none;
+  z-index: 1;
+}
+
+.navigation li {
+  border: 3px solid #eceff1;
+  width: 18px;
+  height: 18px;
+  margin: 0 5px;
+  background: #52525a;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.navigation .active {
+  background: #eceff1;
+}
