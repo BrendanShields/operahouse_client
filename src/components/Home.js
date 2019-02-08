@@ -1,4 +1,4 @@
-import React, { useState, Components } from 'react';
+import React, { useState, Component } from 'react';
 
 const Home = () => {
 
