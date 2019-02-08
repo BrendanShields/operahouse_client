@@ -6,10 +6,16 @@ const Categories = () => (
         <h2>Categories</h2>
         <ul>
             <li>
-                <Link to="/events/drama">Drama</Link>
+                <Link to="/events/dance">Dance</Link>
             </li>
             <li>
-                <Link to="/events/comics">Comics</Link>
+                <Link to="/events/opera">Opera</Link>
+            </li>
+            <li>
+                <Link to="/events/classical-music">Classical Music</Link>
+            </li>
+            <li>
+                <Link to="/events/kids-and-families">Kids & Families</Link>
             </li>
             
         </ul>
