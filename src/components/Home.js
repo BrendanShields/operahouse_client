@@ -1,4 +1,7 @@
 import React, { useState, Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import Slider from './Slider';
 
 const Home = () => {
 
@@ -6,13 +9,8 @@ const [count, setCount] = useState(0)
 
 return (
     <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-      <nav> This is a NavBar </nav>
       <h1> Welcome to the Opera House! </h1>
-      <h2> Slider </h2>
+      <Slider />
     </div>
   );
 }
