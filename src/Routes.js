@@ -48,9 +48,6 @@ const Routes = () => (
     </Router>
 );
 
-<<<<<<< HEAD
-export default Routes;
-=======
 const OldMenuLink = ({ label, to, activeOnlyWhenExact }) => (
     <Route
         path={to}
@@ -65,4 +62,3 @@ const OldMenuLink = ({ label, to, activeOnlyWhenExact }) => (
 );
 
 export default Routes;
->>>>>>> 18f4aaa775eb246ec1a363dae8d1f80d599c7088
