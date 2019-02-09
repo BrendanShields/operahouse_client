@@ -4,50 +4,20 @@ import Home from './components/Home';
 import Categories from './components/Categories';
 import Events from './components/Events';
 
-const routes = [
-    {
-        path: "/home",
-        component: Home
-    },
-    {
-        path: "/categories",
-        component: Categories,
-        routes: [
-            {
-                path: "/events/:genre",
-                component: Events
-            }
-        ]
-    }
-];
-
-const RouteWithSubRoutes = route => (
-    <Route
-        path={route.path}
-        render={props => (
-            <route.component {...props} routes={route.routes} />
-        )}
-    />
-);
-
 const Routes = () => (
-    <Router>
+    <Router class="navbar">
         <div>
-            <ul>
-                <li>
-                    <OldMenuLink activeOnlyWhenExact={true} to="/home" label="Home" />
-                </li>
-                <li>
-                    <OldMenuLink to="/categories" label="Categories" />
-                </li>
-            </ul>
+            <MenuLink activeOnlyWhenExact={true} to="/" label="Home" />
+            <MenuLink to="/events" label="Events" />
             <hr />
-            {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/events" component={Categories}/>
+            <Route path="/events/:genre" component={Events}/>
         </div>
     </Router>
 );
 
-const OldMenuLink = ({ label, to, activeOnlyWhenExact }) => (
+const MenuLink = ({ label, to, activeOnlyWhenExact }) => (
     <Route
         path={to}
         exact={activeOnlyWhenExact}

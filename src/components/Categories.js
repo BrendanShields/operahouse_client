@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Categories = () => (
-    <div>
+    <div className="cat-list">
         <h2>Categories</h2>
         <ul>
             <li>
