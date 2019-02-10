@@ -5,14 +5,14 @@ import Login from './Login'
 
 const Home = () => {
 
-
-return (
-    <div>
+  return (
+    <div className="home">
       <h1> Welcome to the Opera House! </h1>
       < Login />
       <Slider />
 
     </div>
+
   );
 }
 

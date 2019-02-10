@@ -1,0 +1,21 @@
+body{
+  margin: 0 auto;
+  text-align: center;
+  background-color: #FAFAFA;
+}
+.cat-list {
+  display: grid;
+  grid-column-template: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+
+
+}
+
+.grid-item {
+
+  margin: 20px 20px;
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  background-color: rgb(29, 177, 203);
+}

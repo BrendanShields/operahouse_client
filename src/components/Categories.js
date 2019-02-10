@@ -1,48 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-import Login from './Login'
-
+import './categories.css'
 function Categories() {
 
-  const [results, setResults] = useState([]);
+const [categories, setCat] = useState([]);
+
+// Hook for Axios to retrieve data.
   useEffect(() => {
      getDataFromApi();
    },[])
-
     const getDataFromApi = async () => {
      const response = await axios
        .get(`http://localhost:3000/categories.json`);
-     setResults(response.data)
+     setCat(response.data)
    }
 
-   console.log(results)
 return(
     <div>
-    < Login />
-    {results.map((category) =>
-      category.genre )}
-
-        <h2>categories</h2>
-        <ul>
-            <li>
-                <Link to="/events/dance">Dance</Link>
-            </li>
-            <li>
-                <Link to="/events/opera">Opera</Link>
-            </li>
-            <li>
-                <Link to="/events/classical-music">Classical Music</Link>
-            </li>
-            <li>
-                <Link to="/events/kids-and-families">Kids & Families</Link>
-            </li>
-        </ul>
-
-    </div >
-
-
+    <div className="cat-list">
+    <h2>Categories</h2>
+    <ul>
+    {categories.map((category) =>
+      <div className="grid-item"><Link to={'/events/' + category.genre}>{category.genre}</Link></div>)}
+    </ul>
+    </div>
+    </div>
 )};
-
 
 export default Categories;

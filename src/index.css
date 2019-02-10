@@ -12,3 +12,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* -------------------------------------------- */
+
+body {
+  background: #333;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
+  color: white;
+  margin: 10px auto;
+}
+
+.home {
+  width: 960px;
+  margin: 0 auto;
+}
+
+a {
+  color: lightblue;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cat-list {
+  margin: 10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+
