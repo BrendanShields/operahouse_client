@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React from 'react';
 
 const Events = () => {
     return(
@@ -6,7 +6,7 @@ const Events = () => {
             <p>events coming here</p>
             {/* <h2>{ this.props.match.params.genre }</h2> */}
         </div>
-        
+
     );
 }
 

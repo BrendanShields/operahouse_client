@@ -1,7 +1,7 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-
+import Login from './Login'
 
 function Categories() {
 
@@ -16,13 +16,10 @@ function Categories() {
      setResults(response.data)
    }
 
-console.table(results.map((category) =>
-  console.log(category.genre)
-))
-
+   console.log(results)
 return(
     <div>
-
+    < Login />
     {results.map((category) =>
       category.genre )}
 
@@ -43,6 +40,8 @@ return(
         </ul>
 
     </div >
+
+
 )};
 
 

@@ -1,31 +1,19 @@
 
-import React, { useState, Component } from 'react';
+import React from 'react';
 import Slider from './Slider';
+import Login from './Login'
+
+const Home = () => {
 
 
-class Home extends Component {
+return (
+    <div>
+      <h1> Welcome to the Opera House! </h1>
+      < Login />
+      <Slider />
 
-  constructor(props) {
-    super(props)
-    this.state = {bananasReceived: ""}
-    this.getBananas = this.getBananas.bind(this)
-  }
-  getBananas() {
-    this.setState({bananasReceived: "Where are my bananas?"})
-  }
-  render() {
-    return (
-      <div className="App">
-        <button
-          onClick={this.getBananas}
-          style={{marginTop: '25vh'}}
-          >
-          Get Bananas
-        </button>
-        <p>{this.state.bananasReceived}</p>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default Home
