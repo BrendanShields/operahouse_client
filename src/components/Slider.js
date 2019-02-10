@@ -3,7 +3,7 @@ import React, { useState, Component } from 'react';
 const Slider = () => {
 
 return (
-    <div class="cache">
+    <div className="cache">
      
       <img src="img/masks/cube-a.svg" />
       <img src="img/masks/cube-b.svg" />
