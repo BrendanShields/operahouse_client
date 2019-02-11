@@ -1,72 +1,63 @@
 
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import "./categories.css"
 
-const EVENTS_URL = "http://localhost:3000/events.json";
-const CATEGORIES_URL = "http://localhost:3000/categories.json";
-const EVENT_SPACES_URL = "http://localhost:3000/event_spaces.json";
 
-const urlMatchToGenre = {
-    dance: 'Dance',
-    opera: 'Opera',
-    'classical-music': 'Classical Music',
-    'kids-and-families': 'Kids & Families'
-}
 
-class Events extends Component {
-    constructor() {
-        super();
 
-        this.state = {
-            name: [],
-            date: [],
-            duration: [],
-        };
 
-        const fetchEvent = () => {
-            axios.get(CATEGORIES_URL).then((results) => {
-                // console.log('results:', results);
-                const outcome = results.data.filter((event) => {
-                    if (event.genre === urlMatchToGenre[this.props.match.params.genre]) {
-                        return event;
-                    }
-                });
+function Events() {
+// State
 
-                const cat_id = outcome.map((event) => event.id)[0];
-                // console.log("category_id", cat_id);
+// Creates a filtered URL from the current url to find the current GENRE
+let url = window.location.href
+url = url.replace('http://localhost:3001/events/', '')
+url = url.replace('%20', ' ')
+url = url.replace('%20', ' ')
+console.log(url)
 
-                axios.get(EVENTS_URL).then((results) => {
-                    // console.log("results for events:", results);
-                    const outcome = results.data.filter((event) => {
-                        if (event.category_id === cat_id) {
-                            return event;
-                        }
-                    });
 
-                    const space_id = outcome.map((event) => event.event_space_id);
-                    // console.log(space_id)
+const [category, setCat] = useState([]);
+const [event, setEvent] = useState([]);
+const [cat_id, setID] = useState(null)
 
-                    this.setState({
-                        name: outcome.map((event) => event.name),
-                        date: outcome.map((event) => event.date),
-                        duration: outcome.map((event) => event.duration),
-                    })
-                });
-            });
-        }
+useEffect(() => {
+    getDataFromEvent();
+  }, [])
+  const getDataFromEvent = async () => {
+    const response = await axios
+      .get(`http://localhost:3000/events.json`);
+    setEvent(response.data)
+  }
 
-        fetchEvent();
+
+
+  useEffect(() => {
+      getDataFromCat();
+    }, [])
+    const getDataFromCat = async () => {
+      const response = await axios
+        .get(`http://localhost:3000/categories.json`);
+      setCat(response.data)
     }
-
-    render() {
+    let names = []
         return (
-            <div>
-                <h2>{this.state.name}</h2>
-                <h4>Date: {this.state.date}</h4>
-                <p>Duration: {this.state.duration} minutes</p>
-            </div >
+          <div>
+          <h1>{category.filter((cat) => {
+                if (url === cat.genre) {
+                const id = cat.id
+                  event.filter((event) => {
+                    if (event.category_id === id){
+                     names.push(event.name)
+                    }
+                  })
+                }
+              })
+            } <div className="grid-item">{names}</div></h1>
+          </div>
         );
     }
-}
 
 export default Events;
