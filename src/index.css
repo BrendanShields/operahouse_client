@@ -20,7 +20,7 @@ body {
   height: 100%;
   overflow: hidden;
   text-align: center;
-  color: white;
+  color: gray;
   margin: 10px auto;
 }
 
@@ -36,6 +36,12 @@ a {
 }
 
 .cat-list {
+  margin: 10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+.events {
   margin: 10px;
   text-align: left;
   font-size: 20px;

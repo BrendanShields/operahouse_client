@@ -1,7 +1,6 @@
-
 import React from 'react';
 import Slider from './Slider';
-import Login from './Login'
+import Login from './Login';
 
 const Home = () => {
 
@@ -9,8 +8,6 @@ const Home = () => {
     <div className="home">
       <h1> Welcome to the Opera House! </h1>
       < Login />
-      <Slider />
-
     </div>
 
   );
