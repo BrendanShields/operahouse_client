@@ -1,40 +1,59 @@
 import React, { useState, useEffect, Component } from 'react';
-import Search from './Search'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-
+import "./categories.css"
 
 function Events() {
+// State
 
-    const [categories, setCat] = useState([]);
-    const [events, setEvents] = useState([]);
+// Creates a filtered URL from the current url to find the current GENRE
+let url = window.location.href
+url = url.replace('http://localhost:3001/events/', '')
+url = url.replace('%20', ' ')
+url = url.replace('%20', ' ')
+console.log(url)
 
-    // Hook for Axios to retrieve data.
-    useEffect(() => {
-        getDataFromApi();
+
+const [category, setCat] = useState([]);
+const [event, setEvent] = useState([]);
+const [cat_id, setID] = useState(null)
+
+useEffect(() => {
+    getDataFromEvent();
+  }, [])
+  const getDataFromEvent = async () => {
+    const response = await axios
+      .get(`http://localhost:3000/events.json`);
+    setEvent(response.data)
+  }
+
+
+
+  useEffect(() => {
+      getDataFromCat();
     }, [])
-    const getDataFromApi = async () => {
-        const response = await axios
-            .get(`http://localhost:3000/categories.json`);
-        setCat(response.data);
+    const getDataFromCat = async () => {
+      const response = await axios
+        .get(`http://localhost:3000/categories.json`);
+      setCat(response.data)
     }
-
-    const findCatId = () => {
-        const id = categories.filter((cat) => {
-          if (cat.id === ) {
-            setResult(prop);
-          }
-        });
-      };
-
-    return (
-        <div>
-            <div className="events">
-                <h2>hello</h2>
-            </div>
-        </div>
-    );
-}
+    let names = []
+        return (
+          <div>
+          <h1>{category.filter((cat) => {
+                if (url === cat.genre) {
+                const id = cat.id
+                  event.filter((event) => {
+                    if (event.category_id === id){
+                     names.push(event.name)
+                    }
+                  })
+                }
+              })
+            } <div className="grid-item">{names}</div></h1>
+          </div>
+        );
+    }   
 
 
 export default Events;
