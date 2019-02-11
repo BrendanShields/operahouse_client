@@ -3,17 +3,21 @@ body{
   margin: 0 auto;
   text-align: center;
   background-color: #FAFAFA;
+  font-family: 'Work Sans', sans-serif;
 }
 .cat-list {
-  display: grid;
-  grid-column-template: 1fr 1fr 1fr 1fr;
+  display: relative;
+  grid-template-columns: 1fr 1fr 1fr;
   margin: 0 auto;
 }
 .grid-item {
-
-  margin: 20px 20px;
-  display: inline-block;
-  height: 300px;
-  width: 300px;
+  margin: 20px 10px;
+  display: inline-block;  
+  height: 200px;
+  width: 200px;
   background-color: rgb(29, 177, 203);
+}
+
+h2 {
+  text-align: center;
 }

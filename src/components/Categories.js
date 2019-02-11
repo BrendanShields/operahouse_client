@@ -24,7 +24,7 @@ function Categories() {
         <h2>Categories</h2>
         <ul>
           {categories.map((category) =>
-            <div className="grid-item"><Link to={'/events/' + category.genre}>{category.genre}</Link></div>)}
+            <li className="grid-item"><Link to={'/events/' + category.genre}>{category.genre}</Link></li>)}
         </ul>
       </div>
     </div>
