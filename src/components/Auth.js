@@ -12,4 +12,9 @@ const checkAuthOfApi = async (req, res) => {
  }
 checkAuthOfApi(header)
 
+
+return (
+  <div>
+  </div>
+)
 }
