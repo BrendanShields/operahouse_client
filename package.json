@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
     "@use-hooks/axios": "^1.0.7",
-
     "axios": "^0.18.0",
     "react": "^16.8.1",
+    "react-cookie": "^3.0.8",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",

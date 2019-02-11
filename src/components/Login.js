@@ -3,20 +3,43 @@ import axios from 'axios'
 
 function Form() {
 
+// Hooks for different variables
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [api, setAPI] = useState()
   const request = {"auth": {"email": email, "password": password}}
-
+  const header = {"headers": {"Authorization": api}}
+// on Form submit
   const handleSubmit = event => {
      event.preventDefault()
-     postDataToApi();
+     postDataToApi(request, []);
    }
 
-  const postDataToApi = async () => {
+// Post to axios the Form input
+  const postDataToApi = async (req, res) => {
      const response = await axios
-       .post("http://localhost:3000/api/user_token", {request});
-     console.log(response)
+       .post("http://localhost:3000/chicken_token", req)
+
+// If response, populate api hook with Auth token and format
+       if (response.data != undefined) {
+         setAPI('Bearer ' + response.data.jwt)
+     }
    }
+
+// Commit formated Auth token to local storage
+   if (api != undefined){
+     localStorage.setItem('Authorization', api);
+}
+
+const checkAuthOfApi = async (req, res) => {
+   const response = await axios
+     .get("http://localhost:3000/auth", req)
+// If response, populate api hook with Auth token and format
+    console.log(response)
+ }
+checkAuthOfApi(header)
+
+console.log('api token', api)
 
 return (
     <form onSubmit={handleSubmit}>

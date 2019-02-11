@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Login from './Login'
 import axios from 'axios'
 import './categories.css'
 function Categories() {
+// State
 
 const [categories, setCat] = useState([]);
-
 // Hook for Axios to retrieve data.
   useEffect(() => {
      getDataFromApi();
@@ -16,10 +17,12 @@ const [categories, setCat] = useState([]);
      setCat(response.data)
    }
 
+
 return(
     <div>
     <div className="cat-list">
     <h2>Categories</h2>
+    < Login />
     <ul>
     {categories.map((category) =>
       <div className="grid-item"><Link to={'/events/' + category.genre}>{category.genre}</Link></div>)}
