@@ -1,3 +1,4 @@
+/* ------- Default --------- */
 body {
   margin: 0;
   padding: 0;
@@ -11,17 +12,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-/* -------------------------------------------- */
-
-body {
-  background: #333;
-  height: 100%;
-  overflow: hidden;
-  text-align: center;
-  color: white;
-  margin: 10px auto;
+/* ------------------------------ */
+    background: #333;
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+    color: gray;
+    margin: 5px auto;
 }
 
 .home {
@@ -39,6 +36,188 @@ a {
   margin: 10px;
   text-align: left;
   font-size: 20px;
+}
+
+.events {
+  margin: 10px;
+  text-align: left;
+  font-size: 20px;
+}
+
+
+/* ----------footer-------- */
+
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 55px;
+  /* line-height: 10px; */
+  background: rgb(1, 10, 36);
+  text-align: center; 
+  width: 100%;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid rgb(221, 216, 226);
+  display: inline-block;
+  transition: all 0.5s ease;
+}
+
+.footer ul li .fa {
+  color: #D8E2DC;
+  margin-top: 6px;
+  transition: all 0.5s ease;
+}
+
+/*facebook*/
+.footer ul li:hover.facebook {
+  border: 2px solid #3b5998;
+  box-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+.footer ul li:hover .fa-facebook {
+  color: #3b5998;
+  text-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+/*twitter*/
+.footer ul li:hover.twitter {
+  border: 2px solid #3b5998;
+  box-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+.footer ul li:hover .fa-twitter {
+  color: #3b5998;
+  text-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+/* instagram */
+.footer ul li:hover.instagram {
+  border: 2px solid #3b5998;
+  box-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+.footer ul li:hover .fa-instagram {
+  color: #3b5998;
+  text-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+/* google */
+.footer ul li:hover.google {
+  border: 2px solid #3b5998;
+  box-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+.footer ul li:hover .fa-google {
+  color: #3b5998;
+  text-shadow: 0 0 15px #3b5998;
+  transition: all 0.5s ease;
+}
+
+/* media queries */
+
+@media screen and (max-width: 640px){
+  .footer {
+      width: 350px;
+  }
+  .footer ul li{
+      margin-top: 10px;
+  }
+  .footer ul li.google{
+      margin-left: 60px;
+  }
+}
+
+@media screen and (max-width: 340px){
+  .footer {
+      width: 150px;
+  }
+  .footer ul li{
+      margin:15px;
+  }
+  .footer ul li.google{
+      margin-left: 15px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* youtube link */
+.youtube{
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 160px;
+  text-align: center;
+  padding: 15px 10px;
+  background: #bb0000;
+  border-radius: 5px;
+}
+
+.youtube a{
+  text-decoration: none;
+  color: #fff;
+  text-transform: capitalize;
+  letter-spacing: 1px;
 }
 
 
