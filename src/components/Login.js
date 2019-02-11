@@ -18,7 +18,7 @@ function Form() {
 // Post to axios the Form input
   const postDataToApi = async (req, res) => {
      const response = await axios
-       .post("http://localhost:3000/chicken_token", req)
+       .post("http://localhost:3000/user_token", req)
 
 // If response, populate api hook with Auth token and format
        if (response.data != undefined) {
