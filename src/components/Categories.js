@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './Login'
 import axios from 'axios'
 import './categories.css'
-
+import Auth from './Auth'
 
 function Categories() {
 // State
@@ -22,6 +22,7 @@ function Categories() {
 
   return (
     <div>
+    < Auth />
       <div className="cat-list">
         <h2>Categories</h2>
         <ul>

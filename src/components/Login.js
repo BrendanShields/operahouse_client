@@ -8,7 +8,7 @@ function Form() {
   const [password, setPassword] = useState("");
   const [api, setAPI] = useState()
   const request = {"auth": {"email": email, "password": password}}
-  const header = {"headers": {"Authorization": api}}
+
 // on Form submit
   const handleSubmit = event => {
      event.preventDefault()
@@ -29,15 +29,9 @@ function Form() {
 // Commit formated Auth token to local storage
    if (api != undefined){
      localStorage.setItem('Authorization', api);
-}
+  }
 
-const checkAuthOfApi = async (req, res) => {
-   const response = await axios
-     .get("http://localhost:3000/auth", req)
-// If response, populate api hook with Auth token and format
-    console.log(response)
- }
-checkAuthOfApi(header)
+
 
 console.log('api token', api)
 
