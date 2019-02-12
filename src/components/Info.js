@@ -1,6 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+import React from 'react';
 
 function Info(props) {
     // State
