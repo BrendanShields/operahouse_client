@@ -1,5 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "./categories.css";
 

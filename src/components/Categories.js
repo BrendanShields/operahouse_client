@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Login from './Login'
+import { BrowserRouter as Link } from 'react-router-dom';
+
 import axios from 'axios'
 import './categories.css'
 import Auth from './Auth'

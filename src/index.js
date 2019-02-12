@@ -3,11 +3,6 @@ import ReactDOM from 'react-dom';
 
 
 import './index.css';
-import Home from './components/Home';
-import Slider from './components/Slider';
-import Categories from './components/Categories';
-import Events from './components/Events';
-import Info from './components/Info';
 import * as serviceWorker from './serviceWorker';
 import Routes from './Routes'
 
