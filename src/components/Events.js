@@ -1,72 +1,60 @@
-
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
+import "./categories.css";
 
-const EVENTS_URL = "http://localhost:3000/events.json";
-const CATEGORIES_URL = "http://localhost:3000/categories.json";
-const EVENT_SPACES_URL = "http://localhost:3000/event_spaces.json";
+function Events() {
+  // State
+  // Creates a filtered URL from the current url to find the current GENRE
+  let url = window.location.href
+  url = url.replace('http://localhost:3001/events/', '')
+  url = url.replace('%20', ' ')
+  url = url.replace('%20', ' ')
+  console.log(url)
 
-const urlMatchToGenre = {
-    dance: 'Dance',
-    opera: 'Opera',
-    'classical-music': 'Classical Music',
-    'kids-and-families': 'Kids & Families'
-}
 
-class Events extends Component {
-    constructor() {
-        super();
+  const [category, setCat] = useState([]);
+  const [event, setEvent] = useState([]);
 
-        this.state = {
-            name: [],
-            date: [],
-            duration: [],
-        };
+  useEffect(() => {
+    getDataFromEvent();
+  }, [])
+  const getDataFromEvent = async () => {
+    const response = await axios
+      .get(`http://localhost:3000/events.json`);
+    setEvent(response.data)
+  }
 
-        const fetchEvent = () => {
-            axios.get(CATEGORIES_URL).then((results) => {
-                // console.log('results:', results);
-                const outcome = results.data.filter((event) => {
-                    if (event.genre === urlMatchToGenre[this.props.match.params.genre]) {
-                        return event;
-                    }
-                });
+  useEffect(() => {
+    getDataFromCat();
+  }, [])
+  const getDataFromCat = async () => {
+    const response = await axios
+      .get(`http://localhost:3000/categories.json`);
+    setCat(response.data)
+  }
+  let names = [];
 
-                const cat_id = outcome.map((event) => event.id)[0];
-                // console.log("category_id", cat_id);
+  return (
+    <div>
 
-                axios.get(EVENTS_URL).then((results) => {
-                    // console.log("results for events:", results);
-                    const outcome = results.data.filter((event) => {
-                        if (event.category_id === cat_id) {
-                            return event;
-                        }
-                    });
-
-                    const space_id = outcome.map((event) => event.event_space_id);
-                    // console.log(space_id)
-
-                    this.setState({
-                        name: outcome.map((event) => event.name),
-                        date: outcome.map((event) => event.date),
-                        duration: outcome.map((event) => event.duration),
-                    })
-                });
-            });
+      {category.filter((cat) => {
+        if (url === cat.genre) {
+          const id = cat.id
+          event.filter((event) => {
+            if (event.category_id === id) {
+              names.push(event.name);
+            }
+          })
         }
+      })
+      }
 
-        fetchEvent();
-    }
+      <h2 className="grid-item">{names.map((name) => name )}</h2>
+    </div>
+  );
 
-    render() {
-        return (
-            <div>
-                <h2>{this.state.name}</h2>
-                <h4>Date: {this.state.date}</h4>
-                <p>Duration: {this.state.duration} minutes</p>
-            </div >
-        );
-    }
 }
+
 
 export default Events;
