@@ -4,9 +4,15 @@ body
   padding: 0;
   background: #232323;
   color: #cdcdcd;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: "Neuton";
 }
 
+.slider{
+  display: block;
+  position: absolute;
+  top: 30px;
+  width: 100vw;
+}
 .cover {
 
   border-radius: 400px;
@@ -35,9 +41,8 @@ a:hover
 {
   display: block;
   position: relative;
-  top: 50px;
-  left: 50px;
-
+  top: 30px;
+  left: 20px;
   z-index: 1;
 
   -webkit-user-select: none;
@@ -130,8 +135,8 @@ a:hover
 {
   background-color: rgb(255, 255, 255, .5);
   position: absolute;
-  width: 150px;
-  margin: -170px 20px 50px -50px;
+  width: 200px;
+  margin: -170px 20px 50px -60px;
   padding: 40px 0 40px 80px;
   padding-top: 125px;
 
@@ -186,10 +191,20 @@ html {
   animation-duration:5s;
 }
 
+.content {
+height: 70vh;
+margin: 0px;
+padding: 0px;
+left: 0px
+}
+
+.navigation {
+  background-color: white;
+}
 
 
 h1 {
-  font-family:monospace;
+  font-family: "Neuton";
 }
 
 @keyframes slide {

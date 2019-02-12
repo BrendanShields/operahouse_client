@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './Login'
 import axios from 'axios'
-import './categories.css'
+import './css/categories.css'
 
 
 function Categories() {
@@ -24,9 +24,10 @@ function Categories() {
     <div>
       <div className="cat-list">
         <h2>Categories</h2>
+        
         <ul>
           {categories.map((category) =>
-            <li className="grid-item"><Link to={'/events/' + category.genre}>{category.genre}</Link></li>)}
+            <li className="grid-item"><Link to={'/events/' + category.genre.replace(/ /g, "_")}>{category.genre}</Link></li>)}
         </ul>
       </div>
     </div>
