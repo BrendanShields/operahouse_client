@@ -77,11 +77,6 @@ $color_grey_dark: #a2a2a2;
     ul li {
       display: inline-block;
     }
-    .author:before {
-      font-family: FontAwesome;
-      margin-right: 10px;
-      content: "\f007";
-    }
 
     .date:before {
       font-family: FontAwesome;
@@ -92,7 +87,7 @@ $color_grey_dark: #a2a2a2;
     .tags {
       ul:before {
         font-family: FontAwesome;
-        content: "\f02b";
+        content: "\f041";
         margin-right: 10px;
       }
       li {
