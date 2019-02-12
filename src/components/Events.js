@@ -3,15 +3,11 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import "./categories.css";
 
-function Events() {
+function Events(props) {
   // State
   // Creates a filtered URL from the current url to find the current GENRE
-  let url = window.location.href
-  url = url.replace('http://localhost:3001/events/', '')
-  url = url.replace('%20', ' ')
-  url = url.replace('%20', ' ')
-  console.log(url)
-
+  const genre = props.match.params.genre.replace(/_/g, ' ');
+  // console.warn(genre);
 
   const [category, setCat] = useState([]);
   const [event, setEvent] = useState([]);
@@ -39,7 +35,7 @@ function Events() {
     <div>
 
       {category.filter((cat) => {
-        if (url === cat.genre) {
+        if (genre === cat.genre) {
           const id = cat.id
           event.filter((event) => {
             if (event.category_id === id) {
@@ -49,8 +45,11 @@ function Events() {
         }
       })
       }
-
-      <h2 className="grid-item">{names.map((name) => name )}</h2>
+      <ul>
+        {/* props.match.params.genre */}
+          {names.map((name) => 
+            <li className="grid-item"><Link to={'/events/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>{name}</Link></li>)}
+      </ul>
     </div>
   );
 

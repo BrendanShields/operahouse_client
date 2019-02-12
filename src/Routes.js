@@ -10,8 +10,8 @@ const Routes = () => (
         <div>
             <Route exact path="/" component={Home}/>
             <Route exact path="/events" component={Categories}/>
-            <Route path="/events/:genre" component={Events}/>
-            <Route path="/events/:genre/:name" component={Info}/>
+            <Route exact path="/events/:genre" component={Events}/>
+            <Route exact path="/events/:genre/:name" component={Info}/>
         </div>
     </Router>
 );
