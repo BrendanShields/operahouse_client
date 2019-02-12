@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Link } from 'react-router-dom';
 import axios from 'axios';
 import "./categories.css";
 
@@ -45,7 +46,6 @@ function Events(props) {
       })
       }
       <ul>
-        {/* props.match.params.genre */}
           {names.map((name) => 
             <li className="grid-item"><Link to={'/events/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>{name}</Link></li>)}
       </ul>
