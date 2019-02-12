@@ -6,7 +6,7 @@ import "./categories.css";
 function Events(props) {
   // State
   // Creates a filtered URL from the current url to find the current GENRE
-const genre = props.match.params.genre.replace(/_/g, ' ');
+  const genre = props.match.params.genre.replace(/_/g, ' ');
 
 
   const [category, setCat] = useState([]);
@@ -46,13 +46,8 @@ const genre = props.match.params.genre.replace(/_/g, ' ');
       })
       }
       <ul>
-<<<<<<< HEAD
-          {names.map((name) => 
-            <li className="grid-item"><Link to={'/events/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>{name}</Link></li>)}
-=======
-      {names.map((name) =>
-        <li className="grid-item"><Link to={'/events/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>{name}</Link></li>)}
->>>>>>> 7cc38bb7db12fc2da3a24c202b8cb0b83e7a908c
+        {names.map((name) =>
+          <li className="grid-item"><Link to={'/events/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>{name}</Link></li>)}
       </ul>
     </div>
   );
