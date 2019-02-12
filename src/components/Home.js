@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from './Login';
 import SignUp from './SignUp'
-import './menu.css';
+import './css/menu.css';
 
 const Home = () => {
 

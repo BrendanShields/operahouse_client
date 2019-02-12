@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import "./categories.css";
+import "./css/categories.css";
 
 function Events(props) {
   // State
