@@ -179,7 +179,6 @@ html {
   width: 960px;
   margin: 100px auto;
   /* height: 500px; */
-  background-color:rgba(255,255,255,0.4);
   border-radius:.25em;
   box-shadow:0 0 .25em rgba(0,0,0,.25);
   box-sizing:border-box;
