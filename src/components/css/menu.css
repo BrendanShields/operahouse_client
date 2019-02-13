@@ -172,7 +172,7 @@ html {
 
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(51, 204, 153) 50%, rgb(9, 134, 218) 50%);
+  background-image: linear-gradient(-60deg, rgb(29, 45, 69) 50%, rgb(42, 89, 121) 50%);
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -202,6 +202,9 @@ left: 0px
   background-color: white;
 }
 
+.opera {
+  z-index: 10000;
+}
 
 h1 {
   font-family: "Neuton";

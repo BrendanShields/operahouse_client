@@ -4,7 +4,7 @@ import { useTransition, animated } from 'react-spring'
 import './slider.css'
 
 const pages = [
-  ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://worldstrides.com/wp-content/uploads/2017/06/High_School_Honors_Performance_Series_Sydney_Opera_House.jpg" + ")" }}>Sydney Opera House</animated.div>,
+  ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://i.imgur.com/7TrQtpY.jpg" + ")" }}><span className="first">Sydney Opera House</span></animated.div>,
   ({ style }) => <animated.div style={{ ...style, background: 'lightblue' }}>B</animated.div>,
   ({ style }) => <animated.div style={{ ...style, background: 'lightgreen' }}>C</animated.div>,
 ]
