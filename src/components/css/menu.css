@@ -197,7 +197,7 @@ html {
 }
 
 .background {
-  background-color: white;
+  background-color: rgb(219, 219, 219, 0.8);
   position: absolute;
   display: block;
   width: 100vw;
