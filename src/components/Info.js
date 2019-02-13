@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-import './seats.css'
+import './info.css'
 import Dance from './images/dance.jpg';
 
 

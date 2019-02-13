@@ -29,7 +29,7 @@ const props = useSpring({ opacity: 1, from: { opacity: 0, } })
         <h2>Categories</h2>
         <ul>
           {categories.map((category) =>
-            <li className="grid-item"><Link to={'/events/' + category.genre.replace(/ /g, "_")}>{category.genre}</Link></li>)}
+            <li className="grid-item"><Link  to={'/events/categories' + '/' + category.genre.replace(/ /g, "_")}><p className="text">{category.genre}</p></Link></li>)}
         </ul>
       </div>
     </div>

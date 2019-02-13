@@ -9,10 +9,11 @@ p {
 .container {
   position: absolute;
   top: 140px;
-  background-color: #00D0C0;
+  background-color: rgb(0, 3, 42);
   display: grid;
   grid-template: minmax(100vh, 1fr) / 50% 50%;
   height: 80vh;
+  margin-top: 20px;
 }
 .left-page {
   overflow: hidden;

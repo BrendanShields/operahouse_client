@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
 body{
   color: rgb(75, 74, 73);
   margin: 0 auto;
@@ -18,9 +20,32 @@ body{
   top: -20px;
   height: 300px;
   width: 50px;
-  background-color: rgb(29, 177, 203);
+  background-color: #3b5269;
+  padding-top: 260px;
+  box-shadow: 2px 2px 15px grey;
+}
+
+.text {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+
+  /* Firefox */
+  -moz-transform: rotate(-90deg);
+
+  /* IE */
+  -ms-transform: rotate(-90deg);
+
+  /* Opera */
+  -o-transform: rotate(-90deg);
+
+  color: rgb(167, 163, 163);
+  text-shadow: 2px 2px 12px rgb(22, 21, 21);
+  font-family: "Oswald", sans-serif;
+  font-size: 17px;
+  white-space: nowrap;
 }
 
 h2 {
   text-align: center;
+  color: rgb(93, 91, 91);
 }
