@@ -1,33 +1,57 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios'
 
-function seats() {
+function Seats(props) {
 
-  const URL = props.match.params.genre.replace(/_/g, ' ');
+  const name = props.match.params.name.replace(/_/g, ' ');
 
-  // Hook for seats
-  [seats, setSeats] = useState([])
+  // // Hook for seats
+  // [seats, setSeats] = useState([])
 
-  // Hook for Axios to retrieve data.
+  // // Hook for Axios to retrieve data.
+  // useEffect(() => {
+  //   getDataFromApi();
+  // }, [])
+  // // Function that returns data to seats
+  // const getDataFromApi = async () => {
+  //   const response = await axios
+  //     .get(`http://localhost:3000/seats.json`);
+  //   setSeats(response.data)
+  // }
+
+//// spaces & events ////////////////////////////////////////////////////////////
+  const [spaces, setSpaces] = useState([]);
+  const [events, setEvent] = useState([]);
+
   useEffect(() => {
     getDataFromApi();
   }, [])
-  // Function that returns data to seats
+
   const getDataFromApi = async () => {
-    const response = await axios
-      .get(`http://localhost:3000/seats.json`);
-    setSeats(response.data)
+    const response = await axios 
+       .get(`http://localhost:3000/event_spaces.json`);
+       setSpaces (response.data)
   }
 
-return (
-  <div>
-    <div className="seat-list">
-      <h2>Select your seat</h2>
-      <ul>
-        {categories.map((category) =>
-          <li className="grid-item"><Link to={URL + '/' + seats.id}>{category.genre}</Link></li>)}
-      </ul>
+  useEffect(() => {
+    getDataFromEvent();
+  }, [])
+  const getDataFromEvent = async () => {
+    const response = await axios
+      .get(`http://localhost:3000/events.json`);
+    setEvent(response.data)
+  }
+
+  ///////////////////////////////////////////////////
+
+
+  return (
+    <div className="background">
+      <h2></h2>
+      <p>Hello</p>
     </div>
-  </div>
   )
 }
+
+export default Seats;

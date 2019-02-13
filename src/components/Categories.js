@@ -21,7 +21,7 @@ function Categories() {
   }
 
   return (
-    <div>
+    <div className="background">
       <div className="cat-list">
         <h2>Categories</h2>
         
