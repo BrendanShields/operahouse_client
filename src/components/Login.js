@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios'
 
 function Form() {
@@ -21,19 +21,15 @@ function Form() {
        .post("http://localhost:3000/user_token", req)
 
 // If response, populate api hook with Auth token and format
-       if (response.data != undefined) {
+       if (response.data !== undefined) {
          setAPI('Bearer ' + response.data.jwt)
      }
    }
 
 // Commit formated Auth token to local storage
-   if (api != undefined){
+   if (api !== undefined){
      localStorage.setItem('Authorization', api);
   }
-
-
-
-console.log('api token', api)
 
 return (
     <form onSubmit={handleSubmit}>

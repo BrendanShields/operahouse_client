@@ -1,26 +1,37 @@
 import React, { useState } from "react";
+import axios from 'axios'
 
 function Form() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const request = {"user": {"email": email, "password": password, "username": username}}
+
+  // on Form submit
+    const handleSubmit = event => {
+       event.preventDefault()
+       postDataToApi(request, []);
+     }
+
+  // Post to axios the Form input
+    const postDataToApi = async (req, res) => {
+       const response = await axios
+         .post("http://localhost:3000/users/create", req)
+
+  // If response, populate api hook with Auth token and format
+         if (response.data !== undefined) {
+           window.location.reload()
+       }
+     }
+
 return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <input
-        value={firstName}
-        onChange={e => setFirstName(e.target.value)}
-        placeholder="First name"
+        value={username}
+        onChange={e => setUserName(e.target.value)}
+        placeholder="User name"
         type="text"
         name="firstName"
-        required
-      />
-      <input
-        value={lastName}
-        onChange={e => setLastName(e.target.value)}
-        placeholder="Last name"
-        type="text"
-        name="lastName"
         required
       />
       <input

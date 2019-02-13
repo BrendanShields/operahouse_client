@@ -4,14 +4,31 @@ body
   padding: 0;
   background: #232323;
   color: #cdcdcd;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: "Neuton";
 }
 
+.slider{
+  display: block;
+  position: absolute;
+  top: 30px;
+  width: 100vw;
+}
+.cover {
+
+  border-radius: 400px;
+}
+
+.hero {
+  height: 90vh;
+  width: 100vw;
+  background-color: white;
+  background-size: cover;
+}
 a
 {
   text-decoration: none;
   color: #232323;
-  
+
   transition: color 0.5s ease;
 }
 
@@ -24,11 +41,10 @@ a:hover
 {
   display: block;
   position: relative;
-  top: 50px;
-  left: 50px;
-  
+  top: 30px;
+  left: 20px;
   z-index: 1;
-  
+
   -webkit-user-select: none;
   user-select: none;
 }
@@ -41,12 +57,12 @@ a:hover
   position: absolute;
   top: -7px;
   left: -5px;
-  
+
   cursor: pointer;
-  
+
   opacity: 0; /* hide this */
   z-index: 2; /* and place it over the hamburger */
-  
+
   -webkit-touch-callout: none;
 }
 
@@ -60,14 +76,14 @@ a:hover
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  
+
   background: #cdcdcd;
   border-radius: 3px;
-  
+
   z-index: 1;
-  
+
   transform-origin: 4px 0px;
-  
+
   transition: transform 0.2s cubic-bezier(0.77,0.2,0.05,1.0),
               background 0.3s cubic-bezier(0.77,0.2,0.05,1.0),
               opacity 0.3s ease;
@@ -83,7 +99,7 @@ a:hover
   transform-origin: 0% 100%;
 }
 
-/* 
+/*
  * Transform all the slices of hamburger
  * into a crossmark.
  */
@@ -117,21 +133,22 @@ a:hover
  */
 #menu
 {
+  background-color: rgb(255, 255, 255, .5);
   position: absolute;
-  width: 150px;
-  margin: -170px 20px 50px -50px;
+  width: 200px;
+  margin: -170px 20px 50px -60px;
   padding: 40px 0 40px 80px;
   padding-top: 125px;
-  
+
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
-  
+
   transform-origin: 0% 0%;
   transform: translate(-100%, 0);
-  
+
   transition: transform 1s ease;
-              
+
 }
 
 #menu li
@@ -155,7 +172,7 @@ html {
 
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(51, 204, 153) 50%, rgb(9, 134, 218) 50%);
+  background-image: linear-gradient(-60deg, rgb(29, 45, 69) 50%, rgb(42, 89, 121) 50%);
   bottom:0;
   left:-50%;
   opacity:.5;
@@ -174,12 +191,11 @@ html {
   animation-duration:5s;
 }
 
-.content {
+.background {
   display: block;
   width: 960px;
   margin: 100px auto;
   /* height: 500px; */
-  background-color:rgba(255,255,255,.8);
   border-radius:.25em;
   box-shadow:0 0 .25em rgba(0,0,0,.25);
   box-sizing:border-box;
@@ -191,8 +207,23 @@ html {
   transform:translate(0, 0);
 }
 
+.content {
+height: 70vh;
+margin: 0px;
+padding: 0px;
+left: 0px
+}
+
+.navigation {
+  background-color: white;
+}
+
+.opera {
+  z-index: 10000;
+}
+
 h1 {
-  font-family:monospace;
+  font-family: "Neuton";
 }
 
 @keyframes slide {
@@ -205,7 +236,3 @@ h1 {
 }
 
 /* -------------- */
-
-
-
-

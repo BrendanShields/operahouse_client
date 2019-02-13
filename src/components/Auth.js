@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from 'axios'
 
 export default function Auth() {
@@ -15,6 +15,7 @@ checkAuthOfApi(header)
 
 return (
   <div>
+  <h1>test</h1>
   </div>
 )
 }

@@ -1,17 +1,18 @@
 import React from 'react';
-import Slider from './Slider';
 import Login from './Login';
-import './menu.css';
+import SignUp from './SignUp'
+import './css/menu.css';
+import Slider from './Slider'
 
 const Home = () => {
 
 
   return (
-    <div className="home">
-      <h1> Welcome to the Opera House! </h1>
-      < Login />
 
+    <div className="Slider">
+      < Slider />
     </div>
+
 
   );
 }
