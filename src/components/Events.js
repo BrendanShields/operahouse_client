@@ -20,7 +20,7 @@ function Events(props) {
   }, [])
   const getDataFromEvent = async () => {
     const response = await axios
-      .get(`http://localhost:3000/events.json`);
+      .get(`https://operahouse-server.herokuapp.com/events.json`);
     setEvent(response.data)
   }
 
@@ -29,7 +29,7 @@ function Events(props) {
   }, [])
   const getDataFromCat = async () => {
     const response = await axios
-      .get(`http://localhost:3000/categories.json`);
+      .get(`https://operahouse-server.herokuapp.com/categories.json`);
     setCat(response.data)
   }
 

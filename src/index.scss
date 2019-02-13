@@ -44,11 +44,11 @@ a {
   font-size: 20px;
 }
 /* -------------- App Title (Opera House) ------------- */
-.title { 
-  font: 200 0.8em/1.5 "Neuton"; 
-  background: #090d00; 
+.title {
+  font: 200 0.8em/1.5 "Neuton";
+  background: #090d00;
   color: rgba(255, 255, 255, 0.65);
-  text-align: center; 
+  text-align: center;
   margin: 0;
 }
 
@@ -64,18 +64,18 @@ a {
 	left: 50%;
 	width: 40em;
 	margin: 5px 0 0 -20em;
-  
+
   span {
   	font: 500 2em/0.5 "Oswald", sans-serif;
   	letter-spacing: 0;
   	padding: .25em 0.325em;
 	  display: block;
 	  margin: 0 auto;
-  	text-shadow: 0 0 80px rgba(29, 15, 233, 0.925);
+  	text-shadow: 0 0 80px rgba(230, 230, 230, 0.63);
 
 /* Clip Background Image */
 
-	  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+	  background: url(https://i.imgur.com/K0uZWDo.jpg) repeat-y;
 	  -webkit-background-clip: text;
 	  background-clip: text;
 
@@ -106,10 +106,13 @@ a {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 55px;
+  height: 40px;
+  justify-content: top;
+  padding-top: 0px;
+  margin-top: 0px;
   /* line-height: 10px; */
-  background: rgb(1, 10, 36);
-  text-align: center; 
+  background: rgb(24, 24, 24);
+  text-align: center;
   width: 100%;
 }
 
@@ -120,8 +123,8 @@ a {
 .footer ul li {
   width: 30px;
   height: 30px;
-  line-height: 30px;
-  margin: 0 10px;
+  padding-top: -10px;
+  margin: -10px 10px;
   text-align: center;
   cursor: pointer;
   border-radius: 50%;
@@ -273,5 +276,3 @@ a {
   text-transform: capitalize;
   letter-spacing: 1px;
 }
-
-
