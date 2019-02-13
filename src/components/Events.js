@@ -34,7 +34,7 @@ function Events(props) {
   let names = [];
 
   return (
-    <div>
+    <div className="background">
 
       {category.filter((cat) => {
         if (genre === cat.genre) {

@@ -9,6 +9,7 @@ function Info(props) {
     // State
     // Creates a filtered URL from the current url to find the current EVENT NAME
     const name = props.match.params.name.replace(/_/g, ' ');
+    const genre = props.match.params.genre.replace(/_/g, ' ');
     // console.warn(name);
 
     const [events, setEvent] = useState([]);
@@ -24,11 +25,13 @@ function Info(props) {
     }
 
     return (
-        <div className="info">
-            <h2>{name}</h2>
-            <img src={Dance} />
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-            <button>Book Ticket</button>
+        <div className="background">
+            <div className="info">
+                <h2>{name}</h2>
+                <img src={Dance} />
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                <button><Link to={'/events/' + genre + '/' + name + '/booking'}>Book Ticket</Link></button>
+            </div>
         </div>
     );
 }
