@@ -191,19 +191,26 @@ html {
   animation-duration:5s;
 }
 
+#header {
+
+  height: 100px;
+}
+
 .background {
+  background-color: white;
+  position: absolute;
   display: block;
-  width: 960px;
-  margin: 100px auto;
+  width: 100vw;
   /* height: 500px; */
   border-radius:.25em;
   box-shadow:0 0 .25em rgba(0,0,0,.25);
   box-sizing:border-box;
-  left:50%;
+  height: 80vh;
+  left: 0px;
+  top: 160px;
   padding: 1vmin;
   /* position:fixed; */
   text-align:center;
-  top:50%;
   transform:translate(0, 0);
 }
 

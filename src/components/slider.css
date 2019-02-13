@@ -19,3 +19,20 @@
 .first {
   margin-left: 100px;
 }
+
+@media screen and (max-width: 400px) {
+  .simple-trans-main > div {
+    position: absolute;
+    cursor: pointer;
+    width: 123vw;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    top: 0px;
+    left: 0vw;
+    background-position: center;
+  }
+  .first {
+    margin-left: 0px;
+  }
+}
