@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios'
-import './seats.css'
+import axios from 'axios';
+
+
 function Seats(props) {
 
   const name = props.match.params.name.replace(/_/g, ' ');
@@ -48,7 +49,7 @@ function Seats(props) {
   const location = [];
   const capacity = [];
   return (
-    <div className="background">
+    <div>
 
       {events.filter((event) => {
         if (event.name = name) {

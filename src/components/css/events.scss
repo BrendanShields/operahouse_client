@@ -84,20 +84,19 @@ $color_grey_dark: #a2a2a2;
       content: "\f133";
     }
 
-    .tags {
-      ul:before {
-        font-family: FontAwesome;
-        content: "\f041";
-        margin-right: 10px;
-      }
-      li {
-        margin-right: 2px;
-        &:first-child {
-          margin-left: -4px;
-        }
-      }
+    .duration:before {
+      font-family: FontAwesome;
+      content: "\f02b";
+      margin-right: 10px;
+    }
+
+    .location:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f041";
     }
   }
+  
   .description {
     padding: 1rem;
     background: $color_white;

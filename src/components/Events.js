@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import "./css/categories.css";
-import './css/info.scss'
+import './css/events.scss'
 import Dance from './images/dance.jpg';
 
 function Events(props) {
@@ -13,16 +13,8 @@ function Events(props) {
 
   const [category, setCat] = useState([]);
   const [event, setEvent] = useState([]);
+  const [showings, setShows] = useState([]);
   const [spaces, setSpace] = useState([]);
-
-  useEffect(() => {
-    getDataFromEvent();
-  }, [])
-  const getDataFromEvent = async () => {
-    const response = await axios
-      .get(`https://operahouse-server.herokuapp.com/events.json`);
-    setEvent(response.data)
-  }
 
   useEffect(() => {
     getDataFromCat();
@@ -34,17 +26,39 @@ function Events(props) {
   }
 
   useEffect(() => {
-    getDataFromSpace();
+    getDataFromEvent();
   }, [])
-    const getDataFromSpace = async () => {
-      const response = await axios
-        .get(`http://localhost:3000/event_spaces.json`);
-      setSpace(response.data);
-    }
-  
+  const getDataFromEvent = async () => {
+    const response = await axios
+      .get(`https://operahouse-server.herokuapp.com/events.json`);
+    setEvent(response.data)
+  }
+
+  useEffect(() => {
+    getDataFromShowings();
+  }, [])
+  const getDataFromShowings = async () => {
+    const response = await axios
+      .get(`https://operahouse-server.herokuapp.com/showings.json`);
+    setShows(response.data);
+  }
+
+  useEffect(() => {
+    getDataFromEventSpace();
+  }, []);
+  const getDataFromEventSpace = async () => {
+    const response = await axios
+    .get('https://operahouse-server.herokuapp.com/event_spaces.json');
+    setSpace(response.data);
+  }
+
+
   let names = [];
+  let durations = [];
   let dates = [];
-  let locations = [];
+  let times = [];
+  let eventSpaces = [];
+
 
   return (
     <div className="background">
@@ -52,16 +66,24 @@ function Events(props) {
       {category.filter((cat) => {
         if (genre === cat.genre) {
           const id = cat.id
+
           event.filter((event) => {
             if (id === event.category_id) {
-              console.log(event.name);
+              const eventId = event.id;
               names.push(event.name);
-              dates.push(event.date);
-              const spId = event.event_space_id
-              locations.filter((loc) => {
-                if (spId === loc.id) {
-                  
-                  locations.push(loc.name);
+              durations.push(event.duration);
+
+              showings.filter((show) => {
+                if (eventId === show.event_id) {
+                  const eveSpace = show.event_space_id;
+                  dates.push(show.date);
+                  times.push(show.time);
+
+                  spaces.filter((space) => {
+                    if (eveSpace === space.id) {
+                      eventSpaces.push(space.name);
+                    }
+                  })
                 }
               })
             }
@@ -71,37 +93,30 @@ function Events(props) {
       }
 
       <ul className="info">
-        {names.map((name) =>
-          dates.map((date) =>
-            spaces.map((space) =>
-              <li>
-                <div className="blog-card">
-                  <div className="meta">
-                    <div className="photo" style={{ background: `url( ${Dance} )` }}></div>
+        {names.map((name, index) =>
+          <li>
+            <div className="blog-card">
+              <div className="meta">
+                <div className="photo" style={{ background: `url( ${Dance} )` }}></div>
 
-                    <ul className="details">
+                <ul className="details">
+                  <li className="date">{dates[index]}</li>
+                  <li className="duration">Duration: {durations[index]} min </li>
+                  <li className="location">{eventSpaces[index]}</li>
+                </ul>
 
-                      <li class="date">{date}</li>
-                      <li class="tags">
-                        <ul>
-                          <li><a onClick='hello'>Location</a></li>
-                        </ul>
-                      </li>
-                    </ul>
+              </div>
+              <div className="description">
+                <h1>{name}</h1>
+                <h2>Opening a door to the future</h2>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                <p className="read-more">
+                  <Link to={'/events/categories' + '/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>Read More</Link>
+                </p>
 
-                  </div>
-                  <div className="description">
-                    <h1>{name}</h1>
-                    <h2>Opening a door to the future</h2>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
-                    <p className="read-more">
-                      <Link to={'/events/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>Read More</Link>
-                    </p>
-                  </div>
-                </div>
-              </li>
-            )
-          )
+              </div>
+            </div>
+          </li>
         )}
       </ul>
     </div>
