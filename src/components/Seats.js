@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-
+import './seats.css'
 function Seats(props) {
 
   const name = props.match.params.name.replace(/_/g, ' ');
@@ -29,7 +29,7 @@ function Seats(props) {
   }, [])
 
   const getDataFromApi = async () => {
-    const response = await axios 
+    const response = await axios
        .get(`http://localhost:3000/event_spaces.json`);
        setSpaces (response.data)
   }
