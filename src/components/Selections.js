@@ -5,21 +5,10 @@ import Nav from './Nav';
 import './css/selections.scss'
 
 function Selections() {
-    const [events, setEvent] = useState([]);
-
-    useEffect(() => {
-        getDataFromEvent();
-    }, []);
-    const getDataFromEvent = async () => {
-        const response = await axios
-            .get(`https://operahouse-server.herokuapp.com/events.json`);
-        setEvent(response.data);
-    }
 
     return (
         <div>
             <Nav />
-
             <div className="selection">
 
                 <div className="message">
@@ -30,93 +19,163 @@ function Selections() {
                 <div className="grid">
 
                     <div className="item">
-                        <div className="item__details">
-                            jelly-o brownie sweet
-                        </div>
+                        <Link to="/events/categories/opera/werther">
+                            <div className="item__details">
+                                Werther
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--large">
-                        <div className="item__details">
-                            Muffin jelly gingerbread
-                        </div>
+                        <Link to="/events/categories/Classical_Music/Bartók's_Concerto_for_Orchestra">
+                            <div className="item__details">
+                                Bartók's Concerto for Orchestra
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--medium">
-                        <div className="item__details">
-                            sesame snaps chocolate
-                        </div>
+                        <Link to="/events/categories/Kids_&_Families/360_ALLSTARS">
+                            <div className="item__details">
+                                360 ALLSTARS
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--large">
-                        <div className="item__details">
-                            Oat cake
-                        </div>
+                        <Link to="/events/categories/Dance/Verve">
+                            <div className="item__details">
+                                Verve
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--full">
-                        <div className="item__details">
-                            jujubes cheesecake
-                        </div>
+                        <Link to="/events/categories/Cabaret/Blanc_de_Blanc_Encore">
+                            <div className="item__details">
+                                Blanc de Blanc Encore
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--medium">
-                        <div className="item__details">
-                            Dragée pudding brownie
-                        </div>
+                        <Link to="/events/categories/Circus_&_Magic/À_Ố_Làng_Phố">
+                            <div className="item__details">
+                                À Ố Làng Phố
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--large">
-                        <div className="item__details">
-                            Oat cake
-                        </div>
+                        <Link to="/events/categories/Contemporary_Music/Lennon:_Through_A_Glass_Onion">
+                            <div className="item__details">
+                                Lennon: Through A Glass Onion
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item">
-                        <div className="item__details">
-                            powder toffee
-                         </div>
+                        <Link to="/events/categories/Comedy/Lano_&_Woodley:_FLY">
+                            <div className="item__details">
+                                Lano & Woodley: FLY
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--medium">
-                        <div className="item__details">
-                            pudding cheesecake
-                        </div>
+                        <Link to="/events/categories/Film/Casino_Royale_in_Concert">
+                            <div className="item__details">
+                                Casino Royale in Concert
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--large">
-                        <div className="item__details">
-                            toffee bear claw
-                        </div>
+                        <Link to="/events/categories/Musical_Theatre/At_Last_‘The_Etta_James_Story’_with_Vika_Bull">
+                            <div className="item__details">
+                                At Last ‘The Etta James Story’ with Vika Bull
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item">
-                        <div className="item__details">
-                            cake cookie croissant
-                        </div>
+                        <Link to="/events/categories/Talks_&_Ideas/Dr._Jordan_B._Peterson">
+                            <div className="item__details">
+                                Dr. Jordan B. Peterson
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--medium">
-                        <div className="item__details">
-                            liquorice sweet roll
-                        </div>
+                        <Link to="/events/categories/Theatre/How_to_Rule_the_World">
+                            <div className="item__details">
+                                How to Rule the World
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--medium">
-                        <div className="item__details">
-                            chocolate marzipan
-                        </div>
+                        <Link to="/events/categories/Classical_Music/Jazz_at_Lincoln_Center_Orchestra_with_Wynton_Marsalis">
+                            <div className="item__details">
+                                Jazz at Lincoln Center Orchestra with Wynton Marsalis
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item item--large">
-                        <div className="item__details">
-                            danish dessert lollipop
-                        </div>
+                        <Link to="/events/categories/Classical_Music/The_Music_of_Count_Basie_and_Duke_Ellington">
+                            <div className="item__details">
+                                The Music of Count Basie and Duke Ellington
+                            </div>
+                        </Link>
                     </div>
 
                     <div className="item">
-                        <div className="item__details">
-                            sugar plum dragée
-                        </div>
+                        <Link to="/events/categories/Classical_Music/Scottish_Fantasy">
+                            <div className="item__details">
+                                Scottish Fantasy
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="item item--medium">
+                        <Link to="/events/categories/Classical_Music/Barry_Douglas_performs_Brahms">
+                            <div className="item__details">
+                                Barry Douglas performs Brahms
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="item item--medium">
+                        <Link to="/events/categories/Theatre/Faulty_Towers_The_Dining_Experience">
+                            <div className="item__details">
+                                Faulty Towers The Dining Experience
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="item">
+                        <Link to="/events/categories/Theatre/Mosquitoes">
+                            <div className="item__details">
+                                Mosquitoes
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="item">
+                        <Link to="/events/categories/Classical_Music/Wonder">
+                            <div className="item__details">
+                                Wonder
+                            </div>
+                        </Link>
+                    </div>
+
+                    <div className="item">
+                        <Link to="/events/categories/Opera/Wozzeck">
+                            <div className="item__details">
+                                Wozzeck
+                            </div>
+                        </Link>
                     </div>
 
                 </div>

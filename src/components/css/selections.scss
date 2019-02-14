@@ -63,28 +63,75 @@ h1 {
   grid-column-start: auto;
   grid-row-start: auto;
   color: #fff;
-  background:  url('https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
   background-size: cover;
   background-position: center;
   box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
   transition: transform 0.3s ease-in-out;
-  cursor: pointer;
   counter-increment: item-counter;
   
-  &:nth-of-type(3n) {
-    background-image: url('https://images.unsplash.com/photo-1422255198496-21531f12a6e8?dpr=2&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=');
+  &:nth-of-type(1) {
+    background-image: url('/images/werther.jpg');
   }
-  
-  &:nth-of-type(4n) {
-    background-image: url('https://images.unsplash.com/photo-1490914327627-9fe8d52f4d90?dpr=2&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=');
+  &:nth-of-type(2) {
+    background-image: url('/images/bartok.jpg');
+    background-position-x: 400px;
   }
-  
-  &:nth-of-type(5n) {
-    background-image: url('https://images.unsplash.com/photo-1476097297040-79e9e1603142?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
+  &:nth-of-type(3) {
+    background-image: url('/images/360Allstars.jpg');
   }
-  
-  &:nth-of-type(6n) {
-    background-image: url('https://images.unsplash.com/photo-1464652149449-f3b8538144aa?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
+  &:nth-of-type(4) {
+    background-image: url('/images/verve.jpg');
+    background-position-x: 430px;
+  }
+  &:nth-of-type(5) {
+    background-image: url('/images/blancblanc.jpg');
+    background-position-y: -50px;
+  }
+  &:nth-of-type(6) {
+    background-image: url('/images/aolang.jpg');
+  }
+  &:nth-of-type(7) {
+    background-image: url('/images/lennon.jpeg');
+  }
+  &:nth-of-type(8) {
+    background-image: url('/images/lano.jpg');
+  }
+  &:nth-of-type(9) {
+    background-image: url('/images/casinoroyale.jpg');
+  }
+  &:nth-of-type(10) {
+    background-image: url('/images/ettajames.jpg');
+  }
+  &:nth-of-type(11) {
+    background-image: url('/images/jordanp.jpg');
+  }
+  &:nth-of-type(12) {
+    background-image: url('/images/ruletheworld.jpg');
+  }
+  &:nth-of-type(13) {
+    background-image: url('/images/jazz.jpg');
+  }
+  &:nth-of-type(14) {
+    background-image: url('/images/basie.jpg');
+  }
+  &:nth-of-type(15) {
+    background-image: url('/images/scottish.jpg');
+  }
+  &:nth-of-type(16) {
+    background-image: url('/images/barry.jpg');
+  }
+  &:nth-of-type(17) {
+    background-image: url('/images/faultytower.jpg');
+  }
+  &:nth-of-type(18) {
+    background-image: url('/images/mosquitoes.jpg');
+    background-position-y: 140px;
+  }
+  &:nth-of-type(19) {
+    background-image: url('/images/wonder.jpg');
+  }
+  &:nth-of-type(20) {
+    background-image: url('/images/wozzeck.jpg');
   }
   
   &:after {
@@ -128,12 +175,14 @@ h1 {
     padding: 15px;
     color: #444;
     background: #fff;
-    text-transform: lowercase;
+    text-transform: uppercase;
     letter-spacing: 1px;
     color: #828282;
+    font-weight: bold;
+    cursor: pointer;
     
     &:before {
-      content: counter(item-counter);
+      // content: counter(item-counter);
       font-weight: bold;
       font-size: 1.1rem;
       padding-right: 0.5em;
