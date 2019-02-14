@@ -121,7 +121,12 @@ function Events(props) {
                   <h2>Opening a door to the future</h2>
                   <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
                   <p className="read-more">
-                    <Link to={'/events/categories' + '/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>Read More</Link>
+                    {dates[index] 
+                        ?
+                        <Link to={'/events/categories' + '/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>Read More</Link>
+                        :
+                        <div></div>
+                  }
                   </p>
 
                 </div>

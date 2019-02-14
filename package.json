@@ -5,6 +5,8 @@
   "dependencies": {
     "@use-hooks/axios": "^1.0.7",
     "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "lodash-es": "^4.17.11",
     "node-sass": "^4.11.0",
     "prop-types": "^15.7.1",
     "react": "^16.8.1",
