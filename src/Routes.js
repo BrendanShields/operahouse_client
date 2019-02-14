@@ -6,11 +6,13 @@ import Events from './components/Events';
 import Info from './components/Info';
 import Seats from './components/Seats';
 import Login from './components/Login'
+import Selections from './components/Selections';
 
 const Routes = () => (
     <Router class="navbar">
         <div>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/events" component={Selections} />
             <Route exact path="/events/categories" component={Categories}/>
             <Route exact path="/events/categories/:genre" component={Events}/>
             <Route exact path="/events/categories/:genre/:name" component={Info}/>

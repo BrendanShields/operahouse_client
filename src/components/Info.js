@@ -1,53 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios'
-import './info.css'
-import Dance from './images/dance.jpg';
 import Nav from './Nav';
+import axios from 'axios'
+import './css/info.css'
+
 
 function Info(props) {
+  // Creates a filtered URL from the current url to find the current EVENT NAME
+  const URL = window.location.href
+  const name = props.match.params.name.replace(/_/g, ' ');
+  const genre = props.match.params.genre.replace(/_/g, ' ');
+  //  **Format JSON**
+  //____________________________________________________________________________
 
-    // Creates a filtered URL from the current url to find the current EVENT NAME
-    const name = props.match.params.name.replace(/_/g, ' ');
-    const genre = props.match.params.genre.replace(/_/g, ' ');
-    const URL = window.location.href
-    const request = { "booking": { "seat_id": seatID, "user_id": currentUser } }
-    const header = { "headers": { "Authorization": localStorage.Authorization } }
-    const [seatID, setSeatID] = useState()
-    const [events, setEvent] = useState([]);
-    const [currentUser, setCurrentUser] = useState(false) //userID
-    const [message, setMessage] = useState('')
-    const [activeSeat, setSeatToggle] = useState(false)
+  const header = {"headers": {"Authorization": localStorage.Authorization}}
+  //----------------------------------------------------------------------------
 
-    // Authorize User //
-    const checkAuthOfApi = async (req, res) => {
-        const response = await axios
-            .get("http://localhost:3000/auth", req)
-        // If response, populate api hook with Auth token and format
-        console.log(response.data)
-        setMessage(response.data.msg)
-        setCurrentUser(response.data.user_id)
-    }
+  //     **Hooks**
+  //----------------------------------------------------------------------------
+  /* |    SEAT ID    | */ const [seatID, setSeatID] = useState()
+  /* | ARR OF EVENTS | */ const [events, setEvent] = useState([]);
+  /* | ARR OF EVENTS | */ const [bookings, setBookings] = useState([]);
+  /* |    USER ID    | */ const [currentUser, setCurrentUser] = useState(null)
+  /* |  WELCOME MSG  | */ const [message, setMessage] = useState('')
+  /* |  SEAT TOGGLE  | */ const [activeSeat, setSeatToggle] = useState(false)
+  /* |   EVENT ID    | */ const [eventID, setEventID] = useState()
+  /* | Booked Seats  | */ let  booked = []
+  /* |Available Seats| */ const [available, setAvailable] = useState()
+                          const [seats, setSeats] = useState([]);
+                          let selected = []
+  //----------------------------------------------------------------------------
+  // AXIOS FUNCTIONS
+  //----------------------------------------------------------------------------
+  // ** AUTHORIZATION **
+  useEffect(() => {
     checkAuthOfApi(header)
-
-
-    // Hook for Axios to retrieve data.
-    useEffect(() => {
-        getDataFromApi();
-    }, [])
-    const getDataFromApi = async () => {
-        const response = await axios
-            .get(`http://localhost:3000/events.json`);
-        setEvent(response.data)
-    }
-
-    // if current User
-    // arr selected seats pushed from add seat, book sends all data to form.
-    // or axios request sent when all selected seats and book button pressed.
-    // post request arrSeats.each do post update >>> axios re append uID
-
+  }, [])
+    const checkAuthOfApi = async (req, res) => {
+      if (!currentUser) {
+     const response = await axios
+         .get("http://localhost:3000/auth", req)
+             setMessage(response.data.msg)
+             setCurrentUser(response.data.user_id)
+          }
+        }
+  //----------------------------------------------------------------------------
+  // ** EVENT ID **
+  useEffect(() => {
+    getEventID()
+  })
+  const getEventID = async () => {
+  events.filter((event) => {
+    if (event.name === name) {
+      setEventID(event.id);
+      }
+  })
+}
+  //----------------------------------------------------------------------------
+  // ** TOGGLE Seat book **
     const addSeat = (seatID) => {
-        const updatedSeats = seats.map((s) => { 
+      const postDataToApi = async (req, res) => {
+        const request = {"booking": {"seat_id": seatID, "user_id": currentUser, "event_id": eventID}}
+         const response = await axios
+           .post("http://localhost:3000/bookings/create", request)
+         }
+        const updatedSeats = seats.map((s) => {
             if (seatID === s.id) {
                 if (s.color === "red") {
                     s.color = "#edebff";
@@ -57,24 +74,51 @@ function Info(props) {
             }
             return s;
         });
-
         setSeats(updatedSeats);
+        postDataToApi()
     }
-
-    const [seats, setSeats] = useState([]);
-
-    // Hook for Axios to retrieve data.
+  //----------------------------------------------------------------------------
+  // ** SEATS ARR **
     useEffect(() => {
         getSeatFromApi();
     }, [])
     const getSeatFromApi = async () => {
         const response = await axios
             .get(`http://localhost:3000/seats.json`);
-        // setSeat(response.data) 
         setSeats(response.data.map((s) => { s.color = '#edebff'; return s }))
     }
-    console.log(seats);
+  //----------------------------------------------------------------------------
+  // ** BOOKINGS ARR **
+    useEffect(() => {
+        getBookingFromApi();
+    }, [])
+    const getBookingFromApi = async () => {
+        const response = await axios
+            .get(`http://localhost:3000/bookings.json`);
+        setBookings(response.data)
+    }
+  //----------------------------------------------------------------------------
+  // ** EVENTS ARR **
+    useEffect(() => {
+        getDataFromApi();
+    }, [])
+    const getDataFromApi = async () => {
+        const response = await axios
+        .get(`http://localhost:3000/events.json`);
+     setEvent(response.data)
+    }
+  //----------------------------------------------------------------------------
+  // ** BOOKING LOGIC **
 
+  const x = bookings.filter((booking) => {
+      if (booking.event_id === eventID){
+        return booking.seat_id
+        }
+      })
+  const seatIDs = x.map(function(value) {
+      return value.seat_id;
+    });
+  //____________________________________________________________________________
     return (
         <div>
             < Nav />
@@ -110,9 +154,10 @@ function Info(props) {
                         </g>
                         <g id='Layer_6'>
                             {seats.map((seat) =>
-                                <circle onClick={() => addSeat(seat.id)} className={"seat" + seat.id} className="st3" data={seat.id} cx={seat.cx} cy={seat.cy} r={seat.r} stroke="green" fill={seat.color} />
-                            )
+                                seatIDs.indexOf(seat.id) === -1  ? <circle onClick={() => addSeat(seat.id)} className={"seat" + seat.id} className="st3" data={seat.id} cx={seat.cx} cy={seat.cy} r={seat.r} stroke="green" fill={seat.color} /> : <circle  data={seat.id} cx={seat.cx} cy={seat.cy} r={seat.r} fill="rgb(138, 138, 138)" />
+                              )
                             }
+
                         </g>
                     </svg>
                 </div>

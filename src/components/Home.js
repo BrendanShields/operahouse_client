@@ -18,6 +18,11 @@ const Home = () => {
             <span></span>
 
             <ul id="menu">
+
+              <a href="/events">
+                <li>Events</li>
+              </a>
+
               <a href="/events/categories">
                 <li>Categories</li>
               </a>

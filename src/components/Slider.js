@@ -1,7 +1,7 @@
 import { render } from 'react-dom'
 import React, { useState, useCallback } from 'react'
 import { useTransition, animated } from 'react-spring'
-import './slider.css'
+import './css/slider.css'
 
 const pages = [
   ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://www.leguesswho.nl/media/news/Metz1.jpg" + ")" }}><span className="first">Metz</span></animated.div>,
