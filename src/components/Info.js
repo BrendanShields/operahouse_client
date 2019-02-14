@@ -10,14 +10,31 @@ import Nav from './Nav';
 
 function Info(props) {
 
-    // State
-    // Creates a filtered URL from the current url to find the current EVENT NAME
-    const name = props.match.params.name.replace(/_/g, ' ');
-    const genre = props.match.params.genre.replace(/_/g, ' ');
-    // console.warn(name);
+  // Creates a filtered URL from the current url to find the current EVENT NAME
+  const name = props.match.params.name.replace(/_/g, ' ');
+  const genre = props.match.params.genre.replace(/_/g, ' ');
+  const URL = window.location.href
+  const request = {"booking": {"seat_id": seatID, "user_id": currentUser}}
+  const header = {"headers": {"Authorization": localStorage.Authorization}}
+  const [seatID, setSeatID] = useState()
+  const [events, setEvent] = useState([]);
+  const [currentUser, setCurrentUser] = useState(false) //userID
+  const [message, setMessage] = useState('')
+  const [activeSeat, setSeatToggle] = useState(false)
 
-    const URL = window.location.href
-    const [events, setEvent] = useState([]);
+// Authorize User //
+  const checkAuthOfApi = async (req, res) => {
+   const response = await axios
+       .get("http://localhost:3000/auth", req)
+           // If response, populate api hook with Auth token and format
+           console.log(response.data)
+           setMessage(response.data.msg)
+           setCurrentUser(response.data.user_id)
+        }
+  checkAuthOfApi(header)
+
+
+
 
     // Hook for Axios to retrieve data.
     useEffect(() => {
@@ -33,11 +50,12 @@ function Info(props) {
     // arr selected seats pushed from add seat, book sends all data to form.
     // or axios request sent when all selected seats and book button pressed.
     // post request arrSeats.each do post update >>> axios re append uID
-    const [activeSeat, setSeatToggle] = useState(false)
+
     const addSeat = (seat) => {
       console.log(seat)
       activeSeat === true ? setSeatToggle(false) : setSeatToggle(true);
       console.log(activeSeat)
+
     }
           const [seats, setSeat] = useState([]);
 
@@ -65,7 +83,6 @@ function Info(props) {
         <div class="right-page">
           <p><h1> {name} </h1> <hr /> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis </p>
-
 
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'>
           <g id='Layer_3'>
