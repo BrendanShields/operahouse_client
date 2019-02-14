@@ -109,15 +109,6 @@ function Info(props) {
   //----------------------------------------------------------------------------
   // ** BOOKING LOGIC **
 
-<<<<<<< HEAD
-    const desc = []
-    events.filter((event) => {
-       if (name === event.name) {
-         desc.push(event.long_desc);
-       }
-    })
-
-=======
   const x = bookings.filter((booking) => {
       if (booking.event_id === eventID){
         return booking.seat_id
@@ -127,7 +118,14 @@ function Info(props) {
       return value.seat_id;
     });
   //____________________________________________________________________________
->>>>>>> 8ba99a057208de9d5e8b4bcf93f3b8b2ef32113a
+
+  const desc = []
+    events.filter((event) => {
+       if (name === event.name) {
+         desc.push(event.long_desc);
+       }
+    })
+    
     return (
         <div>
             < Nav />
