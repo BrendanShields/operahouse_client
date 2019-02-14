@@ -4,6 +4,10 @@
   font-family: 'Arima Madurai', sans-serif;
 }
 
+form {
+  display: inline-block;
+  width: 200px;
+}
 nav {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -11,7 +15,7 @@ nav {
   grid-gap: 2em;
   align-items: center;
   text-align: center;
-  border-bottom: 3px solid black;
+  border-bottom: 1px solid rgb(177, 177, 177);
   background: rgb(255, 255, 255);
   height: 70px;
 }
@@ -22,7 +26,7 @@ nav {
     grid-template-rows: auto;
     grid-gap: 1em;
  }
-}  
+}
 
 .one {
   grid-column: 1;
@@ -239,4 +243,3 @@ nav {
 }
 
 ////////////////////////////////////
-

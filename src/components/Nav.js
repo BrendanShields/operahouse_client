@@ -4,28 +4,38 @@ import './css/nav.scss';
 import Login from './Login'
 import SignUp from './SignUp'
 import axios from 'axios'
+import Logo from './images/logo.png'
+
 
 function Nav() {
 
-// User Authentication
+//  **Format JSON**
+//____________________________________________________________________________
   const header = {"headers": {"Authorization": localStorage.Authorization}}
-  const [currentUser, setCurrentUser] = useState(false)
-  const [message, setMessage] = useState('')
+//----------------------------------------------------------------------------
+//     **Hooks**
+//----------------------------------------------------------------------------
+/* CURRENT USER */  const [currentUser, setCurrentUser] = useState(false)
+/*LOGGED IN MSG */  const [message, setMessage] = useState('')
+//----------------------------------------------------------------------------
+// AXIOS FUNCTIONS
+//----------------------------------------------------------------------------
+// ** AUTHORIZATION **
   const checkAuthOfApi = async (req, res) => {
     if (!currentUser) {
    const response = await axios
-       .get("http://localhost:3000/auth", req)
+       .get("https://operahouse-server.herokuapp.com/auth", req)
            setMessage(response.data.msg)
            setCurrentUser(response.data.user_id)
            }
         }
   checkAuthOfApi(header)
-
+//----------------------------------------------------------------------------
     return (
         <div>
             <nav>
                 <div className="one">
-                    <a href="/" className="navLinks"></a>
+                    <a href="/" className="navLinks"><img src={Logo} /></a>
                 </div>
 
                 <div className="two">
@@ -53,16 +63,19 @@ function Nav() {
 
                 <div className="four">
                     <div role="login" className="div-item-nav">
-                        <div id="navToggle">
-                            <input type="checkbox" />
+                        <div id="test">
 
                             <span></span>
                             <span></span>
-                            <span></span>
+                            {currentUser === false ? (
+                              <span>
+                                < Login />
+                              </span>
+                            ) : (
+                             <span>{message}</span>
+                            )}
 
-                            <div id="login">
 
-                            </div>
                         </div>
                     </div>
                 </div>

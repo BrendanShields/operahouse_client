@@ -2,16 +2,22 @@ import React from "react";
 import axios from 'axios'
 
 export default function Auth() {
-const header = {"headers": {"Authorization": localStorage.Authorization}}
 
+//  **Format JSON**
+//______________________________________________________________________________
+const header = {"headers": {"Authorization": localStorage.Authorization}}
+//------------------------------------------------------------------------------
+// AXIOS FUNCTIONS
+//------------------------------------------------------------------------------
+// ** AUTHORIZATION **
 const checkAuthOfApi = async (req, res) => {
    const response = await axios
-     .get("http://localhost:3000/auth", req)
+     .get("https://operahouse-server.herokuapp.com/auth", req)
 // If response, populate api hook with Auth token and format
     console.log(response)
  }
 checkAuthOfApi(header)
-
+//------------------------------------------------------------------------------
 
 return (
   <div>

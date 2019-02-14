@@ -17,7 +17,7 @@ function Seats(props) {
   // // Function that returns data to seats
   // const getDataFromApi = async () => {
   //   const response = await axios
-  //     .get(`http://localhost:3000/seats.json`);
+  //     .get(`https://operahouse-server.herokuapp.com/seats.json`);
   //   setSeats(response.data)
   // }
 
@@ -31,7 +31,7 @@ function Seats(props) {
 
   const getDataFromApi = async () => {
     const response = await axios
-      .get(`http://localhost:3000/event_spaces.json`);
+      .get(`https://operahouse-server.herokuapp.com/event_spaces.json`);
     setSpaces(response.data)
 
   }
@@ -41,7 +41,7 @@ function Seats(props) {
   }, [])
   const getDataFromEvent = async () => {
     const response = await axios
-      .get(`http://localhost:3000/events.json`);
+      .get(`https://operahouse-server.herokuapp.com/events.json`);
     setEvent(response.data)
   }
 

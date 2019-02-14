@@ -6,14 +6,27 @@ import './css/events.scss'
 import Nav from './Nav';
 
 function Events(props) {
-  // State
-  // Creates a filtered URL from the current url to find the current GENRE
+// Creates a filtered URL from the current url to find the current EVENT NAME
   const genre = props.match.params.genre.replace(/_/g, ' ');
-
-  const [category, setCat] = useState([]);
-  const [event, setEvent] = useState([]);
-  const [spaces, setSpace] = useState([]);
-
+//------------------------------------------------------------------------------
+// ** ARRAYS
+  let names = [];
+  let durations = [];
+  let dates = [];
+  let eventSpaces = [];
+  let images = [];
+  let subtitles = [];
+  let shortDescs = [];
+//------------------------------------------------------------------------------
+//     **Hooks**
+//------------------------------------------------------------------------------
+/* |   ARR OF CAT  | */  const [category, setCat] = useState([]);
+/* | ARR OF EVENTS | */  const [event, setEvent] = useState([]);
+/* | ARR OF SPACES | */  const [spaces, setSpace] = useState([]);
+//------------------------------------------------------------------------------
+// AXIOS FUNCTIONS
+//------------------------------------------------------------------------------
+// ** CATEGORIES **
   useEffect(() => {
     getDataFromCat();
   }, [])
@@ -22,7 +35,8 @@ function Events(props) {
       .get(`https://operahouse-server.herokuapp.com/categories.json`);
     setCat(response.data)
   }
-
+//------------------------------------------------------------------------------
+// ** EVENTS **
   useEffect(() => {
     getDataFromEvent();
   }, [])
@@ -31,7 +45,8 @@ function Events(props) {
       .get(`https://operahouse-server.herokuapp.com/events.json`);
     setEvent(response.data)
   }
-
+//------------------------------------------------------------------------------
+// ** SPACES **
   useEffect(() => {
     getDataFromEventSpace();
   }, []);
@@ -40,15 +55,8 @@ function Events(props) {
       .get('https://operahouse-server.herokuapp.com/event_spaces.json');
     setSpace(response.data);
   }
+//------------------------------------------------------------------------------
 
-
-  let names = [];
-  let durations = [];
-  let dates = [];
-  let eventSpaces = [];
-  let images = [];
-  let subtitles = [];
-  let shortDescs = [];
 
   return (
     <div>
@@ -69,7 +77,7 @@ function Events(props) {
                 images.push(event.image);
                 subtitles.push(event.subtitle);
                 shortDescs.push(event.short_desc);
-                
+
                 spaces.filter((space) => {
                   if (eveSpace === space.id) {
                     eventSpaces.push(space.name);
@@ -86,7 +94,7 @@ function Events(props) {
               <div className="blog-card">
                 <div className="meta">
                   <div className="photo" style={{backgroundImage: `url(/images/${images[index]})` }}></div>
-                  
+
                   <ul className="details">
                     {dates[index] ? (
                       <div>
@@ -105,7 +113,7 @@ function Events(props) {
                   <h2>{subtitles[index]}</h2>
                   <p>{shortDescs[index]}</p>
                   <p className="read-more">
-                    {dates[index] 
+                    {dates[index]
                         ?
                         <Link to={'/events/categories' + '/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>Read More</Link>
                         :
@@ -121,7 +129,7 @@ function Events(props) {
 
         </ul>
       </div>
-      
+
     </div>
   );
 

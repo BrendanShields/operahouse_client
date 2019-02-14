@@ -10,11 +10,6 @@ function Info(props) {
   const URL = window.location.href
   const name = props.match.params.name.replace(/_/g, ' ');
   const genre = props.match.params.genre.replace(/_/g, ' ');
-  //  **Format JSON**
-  //____________________________________________________________________________
-
-  const header = {"headers": {"Authorization": localStorage.Authorization}}
-  //----------------------------------------------------------------------------
   //     **Hooks**
   //----------------------------------------------------------------------------
   /* |    SEAT ID    | */ const [seatID, setSeatID] = useState()
@@ -24,12 +19,16 @@ function Info(props) {
   /* |  WELCOME MSG  | */ const [message, setMessage] = useState('')
   /* |  SEAT TOGGLE  | */ const [activeSeat, setSeatToggle] = useState(false)
   /* |   EVENT ID    | */ const [eventID, setEventID] = useState()
-  /* | Booked Seats  | */ let  booked = []
-  /* |Available Seats| */ const [available, setAvailable] = useState()
-                          const [seats, setSeats] = useState([]);
-                          let selected = []
+  /* | Booked SEATS  | */ let  booked = []
+  /* |Available SEATS| */ const [available, setAvailable] = useState()
+  /* |   All SEATS   | */ const [seats, setSeats] = useState([]);
+  /* | SELECTED ARR  | */ let selected = []
   //----------------------------------------------------------------------------
   // AXIOS FUNCTIONS
+  //----------------------------------------------------------------------------
+  //  **Format JSON**
+  //____________________________________________________________________________
+  const header = {"headers": {"Authorization": localStorage.Authorization}}
   //----------------------------------------------------------------------------
   // ** AUTHORIZATION **
   useEffect(() => {
@@ -38,9 +37,9 @@ function Info(props) {
     const checkAuthOfApi = async (req, res) => {
       if (!currentUser) {
      const response = await axios
-         .get("http://localhost:3000/auth", req)
+         .get("https://operahouse-server.herokuapp.com/auth", req)
              setMessage(response.data.msg)
-             setCurrentUser(response.data.user_id)
+             setCurrentUser(1)
           }
         }
   //----------------------------------------------------------------------------
@@ -60,8 +59,9 @@ function Info(props) {
     const addSeat = (seatID) => {
       const postDataToApi = async (req, res) => {
         const request = {"booking": {"seat_id": seatID, "user_id": currentUser, "event_id": eventID}}
+        console.log(request)
          const response = await axios
-           .post("http://localhost:3000/bookings/create", request)
+           .post("https://operahouse-server.herokuapp.com/bookings/create", request)
          }
         const updatedSeats = seats.map((s) => {
             if (seatID === s.id) {
@@ -83,7 +83,7 @@ function Info(props) {
     }, [])
     const getSeatFromApi = async () => {
         const response = await axios
-            .get(`http://localhost:3000/seats.json`);
+            .get(`https://operahouse-server.herokuapp.com/seats.json`);
         setSeats(response.data.map((s) => { s.color = '#edebff'; return s }))
     }
   //----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ function Info(props) {
     }, [])
     const getBookingFromApi = async () => {
         const response = await axios
-            .get(`http://localhost:3000/bookings.json`);
+            .get(`https://operahouse-server.herokuapp.com/bookings.json`);
         setBookings(response.data)
     }
   //----------------------------------------------------------------------------
@@ -103,7 +103,7 @@ function Info(props) {
     }, [])
     const getDataFromApi = async () => {
         const response = await axios
-        .get(`http://localhost:3000/events.json`);
+        .get(`https://operahouse-server.herokuapp.com/events.json`);
      setEvent(response.data)
     }
   //----------------------------------------------------------------------------
@@ -125,13 +125,13 @@ function Info(props) {
          desc.push(event.long_desc);
        }
     })
-    
+
     return (
         <div>
             < Nav />
             <div className="container">
                 <div className="left-page">
-                    <span className="cat"><Link to={'/events/categories' + '/' + genre.replace(/ /g, '_') + '/' + name.replace(/ /g, '_') + '/booking'}>Book Ticket</Link></span>
+                    <div className="cat" onClick={() => window.location.reload()}>Book Ticket</div>
                     <h1 className="title">{name} <span>{name}</span></h1>
                     <span className="author">Opera House</span>
                 </div>
