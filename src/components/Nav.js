@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './css/nav.scss';
-import Logo from './images/logo.png'
+// import Logo from './images/logo.png'
 import Login from './Login'
 import SignUp from './SignUp'
 import axios from 'axios'
@@ -26,7 +26,7 @@ function Nav() {
 
             <nav>
                 <div className="one">
-                    <a href="/" className="navLinks"><img src={Logo} /></a>
+                    <a href="/" className="navLinks"></a>
                 </div>
 
                 <div className="two">
