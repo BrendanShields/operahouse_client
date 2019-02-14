@@ -9,6 +9,7 @@ import Nav from './Nav';
 
 
 function Info(props) {
+
     // State
     // Creates a filtered URL from the current url to find the current EVENT NAME
     const name = props.match.params.name.replace(/_/g, ' ');
@@ -32,9 +33,11 @@ function Info(props) {
     // arr selected seats pushed from add seat, book sends all data to form.
     // or axios request sent when all selected seats and book button pressed.
     // post request arrSeats.each do post update >>> axios re append uID
-
+    const [activeSeat, setSeatToggle] = useState(false)
     const addSeat = (seat) => {
       console.log(seat)
+      activeSeat === true ? setSeatToggle(false) : setSeatToggle(true);
+      console.log(activeSeat)
     }
           const [seats, setSeat] = useState([]);
 
@@ -49,6 +52,8 @@ function Info(props) {
           }
 
     return (
+      <div>
+      < Nav />
       <div class="container">
       <div class="left-page">
           <span class="date">19th January 2019</span>
@@ -81,12 +86,12 @@ function Info(props) {
           </g>
           <g id='Layer_6'>
               {seats.map((seat) =>
-              <circle onClick={() => addSeat(seat.id)} className="st3" data={seat.id} cx={seat.cx} cy ={seat.cy} r={seat.r} stroke="green" fill="#edebff"/>
+              <circle onClick={() => addSeat(seat.id)} className={"seat" + seat.id} className="st3" data={seat.id} cx={seat.cx} cy ={seat.cy} r={seat.r} stroke="green" fill="#edebff"/>
               )
             }
           </g>
       </svg>
-
+      </div>
       </div>
       </div>
     );
