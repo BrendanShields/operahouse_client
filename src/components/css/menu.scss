@@ -133,12 +133,11 @@ a:hover
  */
 #menu
 {
-  background-color: rgb(255, 255, 255, .5);
+  /* background-color: rgb(255, 255, 255, .5); */
   position: absolute;
   width: 200px;
-  margin: -170px 20px 50px -60px;
-  padding: 40px 0 40px 80px;
-  padding-top: 125px;
+  margin: -120px 20px 50px -60px;
+  padding: 120px 0 20px 100px;
 
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
@@ -155,6 +154,10 @@ a:hover
 {
   padding: 5px 0;
   font-size: 18px;
+  color: #cdcdcd;
+  font-family: "Oswald", sans-serif;
+  text-shadow: 2px 2px 15px gray;
+  text-align: left;
 }
 
 /*
@@ -164,6 +167,8 @@ a:hover
 {
   transform: none;
 }
+
+
 
 /* ------- background ------ */
 html {
@@ -202,6 +207,9 @@ html {
   width: 100vw;
   /* height: 500px; */
   border-radius:.25em;
+
+  /* box-shadow:0 0 .25em rgba(0,0,0,.25); */
+  box-sizing:border-box;
   height: 80vh;
   left: 0px;
   top: 160px;
@@ -211,11 +219,8 @@ html {
   transform:translate(0, 0);
 }
 
-.content {
-height: 70vh;
-margin: 0px;
-padding: 0px;
-left: 0px
+.bg {
+  background-color: rgba(219, 219, 219, 0.8);
 }
 
 .navigation {

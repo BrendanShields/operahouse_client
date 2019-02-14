@@ -11,11 +11,10 @@ const Routes = () => (
     <Router class="navbar">
         <div>
             <Route exact path="/" component={Home}/>
-            <Route exact path="/login" component={Login}/>
-            <Route exact path="/events" component={Categories}/>
-            <Route exact path="/events/:genre" component={Events}/>
-            <Route exact path="/events/:genre/:name" component={Info}/>
-            <Route exact path="/events/:genre/:name/booking" component={Seats}/>
+            <Route exact path="/events/categories" component={Categories}/>
+            <Route exact path="/events/categories/:genre" component={Events}/>
+            <Route exact path="/events/categories/:genre/:name" component={Info}/>
+            <Route exact path="/events/categories/:genre/:name/booking" component={Seats}/>
         </div>
     </Router>
 );
