@@ -7,21 +7,20 @@ import axios from 'axios'
 
 function Nav() {
 
+// User Authentication
+  const header = {"headers": {"Authorization": localStorage.Authorization}}
+  const [currentUser, setCurrentUser] = useState(false)
+  const [message, setMessage] = useState('')
+  const checkAuthOfApi = async (req, res) => {
+    if (!currentUser) {
+   const response = await axios
+       .get("http://localhost:3000/auth", req)
+           setMessage(response.data.msg)
+           setCurrentUser(response.data.user_id)
+           }
+        }
+  checkAuthOfApi(header)
 
-    // User Authentication
-    const header = { "headers": { "Authorization": localStorage.Authorization } }
-    const [currentUser, setCurrentUser] = useState(false)
-    const [message, setMessage] = useState('')
-    const checkAuthOfApi = async (req, res) => {
-        const response = await axios
-            .get("http://localhost:3000/auth", req)
-        // If response, populate api hook with Auth token and format
-        console.log(response.data)
-        setMessage(response.data.msg)
-        setCurrentUser(response.data.user_id)
-
-    }
-    checkAuthOfApi(header)
     return (
         <div>
             <nav>
