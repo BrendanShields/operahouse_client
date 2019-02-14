@@ -16,7 +16,7 @@ function Form() {
   // Post to axios the Form input
     const postDataToApi = async (req, res) => {
        const response = await axios
-         .post("http://localhost:3000/users/create", req)
+         .post("https://operahouse-server.herokuapp.com/create", req)
 
   // If response, populate api hook with Auth token and format
          if (response.data !== undefined) {

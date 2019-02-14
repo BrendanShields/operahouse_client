@@ -94,8 +94,9 @@ svg{
 .left-page .author {
   grid-area: 3 / 3 / 4 / 4;
   font-size: 14px;
-  color: #00D0C0;
+  color: rgb(0, 5, 5);
   align-self: end;
+  text-shadow: 2px 2px 10px gray;
   justify-self: end;
   font-style: italic;
   text-transform: uppercase;
@@ -108,7 +109,7 @@ svg{
   margin: 20px 30px 30px 0;
   background-color: #fff;
   padding: 30px;
-  color: #00D0C0;
+  color: rgb(0, 8, 8);
   font-size: 18px;
   line-height: 1.65;
   border-left: 1px dashed #f1f1f1;
@@ -158,4 +159,8 @@ svg{
  }
  circle {
    cursor: pointer;
+ }
+
+ .name {
+   text-shadow: 2px 2px 10px gray;
  }

@@ -10,12 +10,6 @@ function Info(props) {
   const URL = window.location.href
   const name = props.match.params.name.replace(/_/g, ' ');
   const genre = props.match.params.genre.replace(/_/g, ' ');
-  //  **Format JSON**
-  //____________________________________________________________________________
-
-  const header = {"headers": {"Authorization": localStorage.Authorization}}
-  //----------------------------------------------------------------------------
-
   //     **Hooks**
   //----------------------------------------------------------------------------
   /* |    SEAT ID    | */ const [seatID, setSeatID] = useState()
@@ -25,12 +19,16 @@ function Info(props) {
   /* |  WELCOME MSG  | */ const [message, setMessage] = useState('')
   /* |  SEAT TOGGLE  | */ const [activeSeat, setSeatToggle] = useState(false)
   /* |   EVENT ID    | */ const [eventID, setEventID] = useState()
-  /* | Booked Seats  | */ let  booked = []
-  /* |Available Seats| */ const [available, setAvailable] = useState()
-                          const [seats, setSeats] = useState([]);
-                          let selected = []
+  /* | Booked SEATS  | */ let  booked = []
+  /* |Available SEATS| */ const [available, setAvailable] = useState()
+  /* |   All SEATS   | */ const [seats, setSeats] = useState([]);
+  /* | SELECTED ARR  | */ let selected = []
   //----------------------------------------------------------------------------
   // AXIOS FUNCTIONS
+  //----------------------------------------------------------------------------
+  //  **Format JSON**
+  //____________________________________________________________________________
+  const header = {"headers": {"Authorization": localStorage.Authorization}}
   //----------------------------------------------------------------------------
   // ** AUTHORIZATION **
   useEffect(() => {
@@ -39,9 +37,9 @@ function Info(props) {
     const checkAuthOfApi = async (req, res) => {
       if (!currentUser) {
      const response = await axios
-         .get("http://localhost:3000/auth", req)
+         .get("https://operahouse-server.herokuapp.com/auth", req)
              setMessage(response.data.msg)
-             setCurrentUser(response.data.user_id)
+             setCurrentUser(1)
           }
         }
   //----------------------------------------------------------------------------
@@ -61,8 +59,9 @@ function Info(props) {
     const addSeat = (seatID) => {
       const postDataToApi = async (req, res) => {
         const request = {"booking": {"seat_id": seatID, "user_id": currentUser, "event_id": eventID}}
+        console.log(request)
          const response = await axios
-           .post("http://localhost:3000/bookings/create", request)
+           .post("https://operahouse-server.herokuapp.com/bookings/create", request)
          }
         const updatedSeats = seats.map((s) => {
             if (seatID === s.id) {
@@ -84,7 +83,7 @@ function Info(props) {
     }, [])
     const getSeatFromApi = async () => {
         const response = await axios
-            .get(`http://localhost:3000/seats.json`);
+            .get(`https://operahouse-server.herokuapp.com/seats.json`);
         setSeats(response.data.map((s) => { s.color = '#edebff'; return s }))
     }
   //----------------------------------------------------------------------------
@@ -94,7 +93,7 @@ function Info(props) {
     }, [])
     const getBookingFromApi = async () => {
         const response = await axios
-            .get(`http://localhost:3000/bookings.json`);
+            .get(`https://operahouse-server.herokuapp.com/bookings.json`);
         setBookings(response.data)
     }
   //----------------------------------------------------------------------------
@@ -104,7 +103,7 @@ function Info(props) {
     }, [])
     const getDataFromApi = async () => {
         const response = await axios
-        .get(`http://localhost:3000/events.json`);
+        .get(`https://operahouse-server.herokuapp.com/events.json`);
      setEvent(response.data)
     }
   //----------------------------------------------------------------------------
@@ -119,21 +118,25 @@ function Info(props) {
       return value.seat_id;
     });
   //____________________________________________________________________________
+
+  const desc = []
+    events.filter((event) => {
+       if (name === event.name) {
+         desc.push(event.long_desc);
+       }
+    })
+
     return (
         <div>
             < Nav />
-            <div class="container">
-                <div class="left-page">
-                    <span class="date">19th January 2019</span>
-                    <span class="cat"><Link to={'/events/categories' + '/' + genre.replace(/ /g, '_') + '/' + name.replace(/ /g, '_') + '/booking'}>Book Ticket</Link></span>
-                    <span class="cat2"><Link to={'/events/categories' + '/' + genre.replace(/ /g, '_') + '/' + name.replace(/ /g, '_') + '/booking'}>Book Ticket</Link></span>
-                    <h1 class="title">{name} <span>{name}</span></h1>
-                    <span class="author">Opera House</span>
+            <div className="container">
+                <div className="left-page">
+                    <div className="cat" onClick={() => window.location.reload()}>Book Ticket</div>
+                    <h1 className="title">{name} <span>{name}</span></h1>
+                    <span className="author">Opera House</span>
                 </div>
-                <div class="right-page">
-                    <p><h1> {name} </h1> <hr /> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis </p>
-
+                <div className="right-page">
+                    <p><h1 className="name"> {name} </h1> <hr/> {desc[0]}</p>
 
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'>
                         <g id='Layer_3'>

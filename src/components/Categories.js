@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import { useSpring, animated } from 'react-spring';
-// import range from 'lodash-es/range'
 import Login from './Login'
 import axios from 'axios'
 import './css/categories.css'
@@ -10,10 +8,14 @@ import Nav from './Nav';
 
 function Categories() {
   // State
-
-  const [categories, setCat] = useState([]);
-
-  // Hook for Axios to retrieve data.
+//------------------------------------------------------------------------------
+//     **Hooks**
+//------------------------------------------------------------------------------
+/* | ARR OF CATEGORIES | */  const [categories, setCat] = useState([]);
+//------------------------------------------------------------------------------
+// AXIOS FUNCTIONS
+//------------------------------------------------------------------------------
+// ** Categories **
   useEffect(() => {
     getDataFromApi();
   }, [])
@@ -22,7 +24,7 @@ function Categories() {
       .get(`https://operahouse-server.herokuapp.com/categories.json`);
     setCat(response.data)
   }
-
+//------------------------------------------------------------------------------
   return (
     <div>
       <Nav />
@@ -34,6 +36,11 @@ function Categories() {
         </ul>
 
       </div>
+
+      <br>
+      </br>
+      <br>
+      </br>
 
     </div>
   )

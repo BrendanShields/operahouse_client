@@ -6,14 +6,27 @@ import './css/events.scss'
 import Nav from './Nav';
 
 function Events(props) {
-  // State
-  // Creates a filtered URL from the current url to find the current GENRE
+// Creates a filtered URL from the current url to find the current EVENT NAME
   const genre = props.match.params.genre.replace(/_/g, ' ');
-
-  const [category, setCat] = useState([]);
-  const [event, setEvent] = useState([]);
-  const [spaces, setSpace] = useState([]);
-
+//------------------------------------------------------------------------------
+// ** ARRAYS
+  let names = [];
+  let durations = [];
+  let dates = [];
+  let eventSpaces = [];
+  let images = [];
+  let subtitles = [];
+  let shortDescs = [];
+//------------------------------------------------------------------------------
+//     **Hooks**
+//------------------------------------------------------------------------------
+/* |   ARR OF CAT  | */  const [category, setCat] = useState([]);
+/* | ARR OF EVENTS | */  const [event, setEvent] = useState([]);
+/* | ARR OF SPACES | */  const [spaces, setSpace] = useState([]);
+//------------------------------------------------------------------------------
+// AXIOS FUNCTIONS
+//------------------------------------------------------------------------------
+// ** CATEGORIES **
   useEffect(() => {
     getDataFromCat();
   }, [])
@@ -22,7 +35,8 @@ function Events(props) {
       .get(`https://operahouse-server.herokuapp.com/categories.json`);
     setCat(response.data)
   }
-
+//------------------------------------------------------------------------------
+// ** EVENTS **
   useEffect(() => {
     getDataFromEvent();
   }, [])
@@ -31,30 +45,24 @@ function Events(props) {
       .get(`https://operahouse-server.herokuapp.com/events.json`);
     setEvent(response.data)
   }
-
+//------------------------------------------------------------------------------
+// ** SPACES **
   useEffect(() => {
     getDataFromEventSpace();
   }, []);
   const getDataFromEventSpace = async () => {
     const response = await axios
-      .get('https://localhost/3000/event_spaces.json');
+      .get('https://operahouse-server.herokuapp.com/event_spaces.json');
     setSpace(response.data);
   }
+//------------------------------------------------------------------------------
 
-
-  let names = [];
-  let durations = [];
-  let dates = [];
-  let eventSpaces = [];
-  let images = [];
-  let subtitles = [];
-  let shortDescs = [];
 
   return (
     <div>
       <Nav />
 
-      <div className="background">
+      <div className="events">
 
         {category.filter((cat) => {
           if (genre === cat.genre) {
@@ -67,11 +75,8 @@ function Events(props) {
                 durations.push(event.duration);
                 dates.push(event.date);
                 images.push(event.image);
-                console.log(images);
                 subtitles.push(event.subtitle);
                 shortDescs.push(event.short_desc);
-                
-
 
                 spaces.filter((space) => {
                   if (eveSpace === space.id) {
@@ -85,11 +90,10 @@ function Events(props) {
           }
         <ul className="info">
           {names.map((name, index) =>
-
             <li>
               <div className="blog-card">
                 <div className="meta">
-                  <img className="photo" src={images[index]}/>
+                  <div className="photo" style={{backgroundImage: `url(/images/${images[index]})` }}></div>
 
                   <ul className="details">
                     {dates[index] ? (
@@ -109,7 +113,7 @@ function Events(props) {
                   <h2>{subtitles[index]}</h2>
                   <p>{shortDescs[index]}</p>
                   <p className="read-more">
-                    {dates[index] 
+                    {dates[index]
                         ?
                         <Link to={'/events/categories' + '/' + props.match.params.genre + '/' + name.replace(/ /g, '_')}>Read More</Link>
                         :
@@ -125,6 +129,7 @@ function Events(props) {
 
         </ul>
       </div>
+
     </div>
   );
 

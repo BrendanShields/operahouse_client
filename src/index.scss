@@ -119,6 +119,7 @@ a {
 /* --------------footer--------------- */
 .footer {
   position: fixed;
+  display: block;
   right: 0;
   bottom: 0;
   left: 0;
@@ -139,8 +140,8 @@ a {
 .footer ul li {
   width: 30px;
   height: 30px;
-  padding-top: -10px;
-  margin: -10px 10px;
+  // padding-top: -5px;
+  margin: -30px 10px;
   text-align: center;
   cursor: pointer;
   border-radius: 50%;

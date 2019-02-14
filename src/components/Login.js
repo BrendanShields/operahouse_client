@@ -3,37 +3,46 @@ import axios from 'axios'
 
 function Form() {
 
-// Hooks for different variables
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [api, setAPI] = useState()
-  const request = {"auth": {"email": email, "password": password}}
 
-// on Form submit
+//     **Hooks**
+//----------------------------------------------------------------------------
+/* |    SEAT ID    | */  const [email, setEmail] = useState("");
+/* |    SEAT ID    | */  const [password, setPassword] = useState("");
+/* |    SEAT ID    | */  const [api, setAPI] = useState()
+//  **Format JSON**
+//____________________________________________________________________________
+  const request = {"auth": {"email": email, "password": password}}
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+// AXIOS FUNCTIONS
+//----------------------------------------------------------------------------
+// **  LOGIN **
   const handleSubmit = event => {
      event.preventDefault()
      postDataToApi(request, []);
    }
-
-// Post to axios the Form input
+//----------------------------------------------------------------------------
+// ** Post to axios the Form input **
   const postDataToApi = async (req, res) => {
      const response = await axios
-       .post("http://localhost:3000/user_token", req)
-
+       .post("https://operahouse-server.herokuapp.com/user_token", req)
+//----------------------------------------------------------------------------
 // If response, populate api hook with Auth token and format
        if (response.data !== undefined) {
-         console.log(response.data)
          setAPI('Bearer ' + response.data.jwt)
+        window.location.reload()
      }
    }
-
+//----------------------------------------------------------------------------
 // Commit formated Auth token to local storage
    if (api !== undefined){
      localStorage.setItem('Authorization', api);
   }
-
+//----------------------------------------------------------------------------
 return (
+
     <form onSubmit={handleSubmit}>
+      <label>Login</label>
       <input
         value={email}
         onChange={e => setEmail(e.target.value)}
