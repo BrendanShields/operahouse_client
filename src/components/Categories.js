@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { useSpring, animated  } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import Login from './Login'
 import axios from 'axios'
 import './css/categories.css'
+import Nav from './Nav';
 
 
 function Categories() {
-// State
+  // State
 
   const [categories, setCat] = useState([]);
 
@@ -20,20 +21,22 @@ function Categories() {
       .get(`https://operahouse-server.herokuapp.com/categories.json`);
     setCat(response.data)
   }
-const props = useSpring({ opacity: 1, from: { opacity: 0, } })
+  const props = useSpring({ opacity: 1, from: { opacity: 0, } })
   return (
-
-    <animated.div style={props}>
-    <div className="background">
-      <div className="cat-list">
-        <h2>Categories</h2>
-        <ul>
-          {categories.map((category) =>
-            <li className="grid-item"><Link  to={'/events/categories' + '/' + category.genre.replace(/ /g, "_")}><p className="text">{category.genre}</p></Link></li>)}
-        </ul>
-      </div>
+    <div>
+      <Nav />
+      <animated.div style={props}>
+        <div className="background">
+          <div className="cat-list">
+            <h2>Categories</h2>
+            <ul>
+              {categories.map((category) =>
+                <li className="grid-item"><Link to={'/events/categories' + '/' + category.genre.replace(/ /g, "_")}><p className="text">{category.genre}</p></Link></li>)}
+            </ul>
+          </div>
+        </div>
+      </animated.div>
     </div>
-    </animated.div>
   )
 };
 
