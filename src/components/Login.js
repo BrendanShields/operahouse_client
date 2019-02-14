@@ -22,6 +22,7 @@ function Form() {
 
 // If response, populate api hook with Auth token and format
        if (response.data !== undefined) {
+         console.log(response.data)
          setAPI('Bearer ' + response.data.jwt)
      }
    }
