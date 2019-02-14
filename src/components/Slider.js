@@ -5,7 +5,7 @@ import './css/slider.css'
 
 const pages = [
   ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://www.leguesswho.nl/media/news/Metz1.jpg" + ")" }}><span className="first">Metz</span></animated.div>,
-  ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://s23527.pcdn.co/wp-content/uploads/2018/08/omar-z-robles-jump.jpg.optimal.jpg" + ")" }}> <span className="first"> Street Ballet </span> </animated.div>,
+  ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://s23527.pcdn.co/wp-content/uploads/2018/08/omar-z-robles-jump.jpg.optimal.jpg" + ")" }}> <span className="first"> Bolshoi </span> </animated.div>,
   ({ style }) => <animated.div style={{ ...style, backgroundImage: "url(" + "https://www.robertvanderree.com/wp-content/uploads/2014/12/ram-pr-anne-marie_jung-2018-foto-robert_van_der_ree-liggend-web.jpg" + ")" }}><span className="first">RAM</span></animated.div>,
 ]
 
