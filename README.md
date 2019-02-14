@@ -1,6 +1,6 @@
-#Opera House Booking and Site navigation project.
+# Opera House Booking and Site navigation project.
 
-##This project uses no classes, only REACT HOOKS with a Ruby on Rails back end.
+## This project uses no classes, only REACT HOOKS with a Ruby on Rails back end.
 
 ## Getting started
 
