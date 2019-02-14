@@ -156,3 +156,6 @@ svg{
     grid-area: 2 / 1 / 4 / 3;
   }
  }
+ circle {
+   cursor: pointer;
+ }

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-// import "./css/categories.css";
+import "./css/categories.css";
 import './css/events.scss'
-import Dance from './images/dance.jpg';
 import Nav from './Nav';
 
 function Events(props) {
@@ -38,7 +37,7 @@ function Events(props) {
   }, []);
   const getDataFromEventSpace = async () => {
     const response = await axios
-      .get('https://operahouse-server.herokuapp.com/event_spaces.json');
+      .get('https://localhost/3000/event_spaces.json');
     setSpace(response.data);
   }
 
@@ -47,6 +46,9 @@ function Events(props) {
   let durations = [];
   let dates = [];
   let eventSpaces = [];
+  let images = [];
+  let subtitles = [];
+  let shortDescs = [];
 
   return (
     <div>
@@ -64,6 +66,12 @@ function Events(props) {
                 names.push(event.name);
                 durations.push(event.duration);
                 dates.push(event.date);
+                images.push(event.image);
+                console.log(images);
+                subtitles.push(event.subtitle);
+                shortDescs.push(event.short_desc);
+                
+
 
                 spaces.filter((space) => {
                   if (eveSpace === space.id) {
@@ -75,15 +83,13 @@ function Events(props) {
               }
             })
           }
-        })
-        }
         <ul className="info">
           {names.map((name, index) =>
 
             <li>
               <div className="blog-card">
                 <div className="meta">
-                  <div className="photo" style={{ background: `url( ${Dance} )` }}></div>
+                  <img className="photo" src={images[index]}/>
 
                   <ul className="details">
                     {dates[index] ? (
@@ -100,8 +106,8 @@ function Events(props) {
                 </div>
                 <div className="description">
                   <h1>{name}</h1>
-                  <h2>Opening a door to the future</h2>
-                  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                  <h2>{subtitles[index]}</h2>
+                  <p>{shortDescs[index]}</p>
                   <p className="read-more">
                     {dates[index] 
                         ?

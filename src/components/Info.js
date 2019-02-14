@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Nav from './Nav';
 import axios from 'axios'
-import './info.css'
+import './css/info.css'
+
 
 function Info(props) {
   // Creates a filtered URL from the current url to find the current EVENT NAME
