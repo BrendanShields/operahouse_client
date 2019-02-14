@@ -65,10 +65,9 @@ function Seats(props) {
       }
       <div className="seatInfo">
 
-        <h2>{location[0]}</h2>
-        <h3>Total seat: {capacity[0]}</h3>
-      </div >
-    </div>  
+        <h2>hello</h2>
+      </div>
+    </div>
   );
 }
 
