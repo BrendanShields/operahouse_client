@@ -15,29 +15,29 @@ body{
 
 }
 .grid-item {
-  margin: 20px 10px;
+  margin: 10px 10px;
   display: inline-block;
   top: -20px;
   height: 300px;
   width: 50px;
+  border-radius: 2px;
   background-color: #3b5269;
   padding-top: 260px;
   box-shadow: 2px 2px 15px grey;
   animation-name: card;
   animation-duration: 4s;
   animation-timing-function: linear;
-  animation-delay: 2s;
   animation-iteration-count: 10;
 }
 
 @-webkit-keyframes card {
-  0%   {background-color:rgb(0, 0, 0); left: 0 ; top:0px;}
+  0%   {background-color:rgb(179, 174, 174); left: 0 ; top:0px;}
   100% {background-color:rgb(67, 99, 241); left: 0; top:200px;}
 }
 
 /* Standard syntax */
 @keyframes card {
-  0%   {background-color:rgb(0, 0, 0); left: 0 ; top:0px;}
+  0%   {background-color: rgb(179, 174, 174); left: 0 ; top:0px;}
   100% {background-color:rgb(67, 99, 241); left: 0 ; top:200px;}
 }
 

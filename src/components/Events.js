@@ -37,7 +37,7 @@ function Events(props) {
   }, []);
   const getDataFromEventSpace = async () => {
     const response = await axios
-      .get('https://localhost/3000/event_spaces.json');
+      .get('https://operahouse-server.herokuapp.com/event_spaces.json');
     setSpace(response.data);
   }
 
@@ -54,7 +54,7 @@ function Events(props) {
     <div>
       <Nav />
 
-      <div className="background">
+      <div className="events">
 
         {category.filter((cat) => {
           if (genre === cat.genre) {
@@ -67,12 +67,9 @@ function Events(props) {
                 durations.push(event.duration);
                 dates.push(event.date);
                 images.push(event.image);
-                console.log(images);
                 subtitles.push(event.subtitle);
                 shortDescs.push(event.short_desc);
                 
-
-
                 spaces.filter((space) => {
                   if (eveSpace === space.id) {
                     eventSpaces.push(space.name);
@@ -85,12 +82,11 @@ function Events(props) {
           }
         <ul className="info">
           {names.map((name, index) =>
-
             <li>
               <div className="blog-card">
                 <div className="meta">
-                  <img className="photo" src={images[index]}/>
-
+                  <div className="photo" style={{backgroundImage: `url(/images/${images[index]})` }}></div>
+                  
                   <ul className="details">
                     {dates[index] ? (
                       <div>
@@ -125,6 +121,7 @@ function Events(props) {
 
         </ul>
       </div>
+      
     </div>
   );
 

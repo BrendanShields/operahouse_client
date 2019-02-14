@@ -7,7 +7,6 @@ import axios from 'axios'
 
 function Nav() {
 
-
 // User Authentication
   const header = {"headers": {"Authorization": localStorage.Authorization}}
   const [currentUser, setCurrentUser] = useState(false)
@@ -21,16 +20,18 @@ function Nav() {
            }
         }
   checkAuthOfApi(header)
+
     return (
         <div>
-
             <nav>
                 <div className="one">
                     <a href="/" className="navLinks"></a>
                 </div>
 
                 <div className="two">
-
+                    <ul className="menu">
+                        <li><a href="/events" className="navLinks">Events</a></li>
+                    </ul>
                 </div>
 
                 <div className="logo">
@@ -44,25 +45,26 @@ function Nav() {
                 </div>
 
                 <div className="three">
-                {currentUser === false ? (
-                    <span>
-                    < Login />
-                    </span>
-                  ) : (
-                      <span>{message}</span>
-                    )}
-                </div>
-
-                <div className="four">
                     <ul className="menu">
                         <li><a href="/events/categories" className="navLinks">Categories</a></li>
                     </ul>
-                    {/* <div className="search">
-                        <div className="search-content">
-                            <button className="search-button"><i className="fa fa-search"></i></button>
-                            <input type="text" className="search-input" placeholder="Search here..." />
+
+                </div>
+
+                <div className="four">
+                    <div role="login" className="div-item-nav">
+                        <div id="navToggle">
+                            <input type="checkbox" />
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                            <div id="login">
+
+                            </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
             </nav>
 
