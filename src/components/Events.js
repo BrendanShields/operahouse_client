@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
-import "./css/categories.css";
+// import "./css/categories.css";
 import './css/events.scss'
 import Dance from './images/dance.jpg';
 import Nav from './Nav';
@@ -11,10 +11,8 @@ function Events(props) {
   // Creates a filtered URL from the current url to find the current GENRE
   const genre = props.match.params.genre.replace(/_/g, ' ');
 
-
   const [category, setCat] = useState([]);
   const [event, setEvent] = useState([]);
-  const [showings, setShows] = useState([]);
   const [spaces, setSpace] = useState([]);
 
   useEffect(() => {
@@ -36,15 +34,6 @@ function Events(props) {
   }
 
   useEffect(() => {
-    getDataFromShowings();
-  }, [])
-  const getDataFromShowings = async () => {
-    const response = await axios
-      .get(`https://operahouse-server.herokuapp.com/showings.json`);
-    setShows(response.data);
-  }
-
-  useEffect(() => {
     getDataFromEventSpace();
   }, []);
   const getDataFromEventSpace = async () => {
@@ -57,13 +46,11 @@ function Events(props) {
   let names = [];
   let durations = [];
   let dates = [];
-  let times = [];
   let eventSpaces = [];
 
   return (
     <div>
       <Nav />
-
 
       <div className="background">
 
@@ -73,19 +60,14 @@ function Events(props) {
 
             event.filter((event) => {
               if (id === event.category_id) {
-                const eventId = event.id;
+                const eveSpace = event.event_space_id;
                 names.push(event.name);
                 durations.push(event.duration);
+                dates.push(event.date);
 
-                showings.filter((show) => {
-                  if (eventId === show.event_id) {
-                    const eveSpace = show.event_space_id;
-                    dates.push(show.date);
-                    times.push(show.time);
-
-                    spaces.filter((space) => {
-                      if (eveSpace === space.id) {
-                        eventSpaces.push(space.name);
+                spaces.filter((space) => {
+                  if (eveSpace === space.id) {
+                    eventSpaces.push(space.name);
                       }
                     })
                   }
