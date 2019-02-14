@@ -21,7 +21,7 @@ function Info(props) {
     // Authorize User //
     const checkAuthOfApi = async (req, res) => {
         const response = await axios
-            .get("http://localhost:3000/auth", req)
+            .get("https://operahouse-server.herokuapp.com/auth", req)
         // If response, populate api hook with Auth token and format
         console.log(response.data)
         setMessage(response.data.msg)
@@ -36,7 +36,7 @@ function Info(props) {
     }, [])
     const getDataFromApi = async () => {
         const response = await axios
-            .get(`http://localhost:3000/events.json`);
+            .get(`https://operahouse-server.herokuapp.com/events.json`);
         setEvent(response.data)
     }
 
@@ -68,27 +68,30 @@ function Info(props) {
     }, [])
     const getSeatFromApi = async () => {
         const response = await axios
-            .get(`http://localhost:3000/seats.json`);
+            .get(`https://operahouse-server.herokuapp.com/seats.json`);
         // setSeat(response.data) 
         setSeats(response.data.map((s) => { s.color = '#edebff'; return s }))
     }
     console.log(seats);
 
+    const desc = []
+    events.filter((event) => {
+       if (name === event.name) {
+         desc.push(event.long_desc);
+       }
+    })
+
     return (
         <div>
             < Nav />
-            <div class="container">
-                <div class="left-page">
-                    <span class="date">19th January 2019</span>
-                    <span class="cat"><Link to={'/events/categories' + '/' + genre.replace(/ /g, '_') + '/' + name.replace(/ /g, '_') + '/booking'}>Book Ticket</Link></span>
-                    <span class="cat2"><Link to={'/events/categories' + '/' + genre.replace(/ /g, '_') + '/' + name.replace(/ /g, '_') + '/booking'}>Book Ticket</Link></span>
-                    <h1 class="title">{name} <span>{name}</span></h1>
-                    <span class="author">Opera House</span>
+            <div className="container">
+                <div className="left-page">
+                    <span className="cat"><Link to={'/events/categories' + '/' + genre.replace(/ /g, '_') + '/' + name.replace(/ /g, '_') + '/booking'}>Book Ticket</Link></span>
+                    <h1 className="title">{name} <span>{name}</span></h1>
+                    <span className="author">Opera House</span>
                 </div>
-                <div class="right-page">
-                    <p><h1> {name} </h1> <hr /> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis </p>
-
+                <div className="right-page">
+                    <p><h1 className="name"> {name} </h1> <hr/> {desc[0]}</p>
 
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'>
                         <g id='Layer_3'>

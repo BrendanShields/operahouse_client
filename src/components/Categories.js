@@ -34,6 +34,11 @@ function Categories() {
         </ul>
 
       </div>
+      
+      <br>
+      </br>
+      <br>
+      </br>
 
     </div>
   )
