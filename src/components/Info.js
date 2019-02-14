@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios'
-import './info.css'
-import Dance from './images/dance.jpg';
+import './css/info.css'
 import Nav from './Nav';
 
 function Info(props) {
