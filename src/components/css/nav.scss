@@ -136,6 +136,8 @@ nav {
 }
 
 .navLinks {
+  font-weight: lighter;
+  font-size: 13px !important;
   font-family: 'Ubuntu', sans-serif;
   font-size: 1em;
   text-transform: uppercase;
@@ -324,7 +326,7 @@ nav {
   transform: none;
 }
 
-//////////////////////////////////// Login 
+//////////////////////////////////// Login
 .dropbtn {
   background-color: #4CAF50;
   color: white;
@@ -368,7 +370,7 @@ nav {
 }
 .details {
   position: inline-block;
-  margin-right: 50px;  
+  margin-right: 50px;
   margin-bottom: 30px;
 }
 .log-in {
