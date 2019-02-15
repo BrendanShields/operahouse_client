@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './css/nav.scss';
 // import Logo from './images/logo.png'
 import Login from './Login'
-import SignUp from './SignUp'
 import axios from 'axios'
 import Logo from './images/logo.png'
 
@@ -30,12 +29,20 @@ function Nav() {
            }
         }
   checkAuthOfApi(header)
+
+  const handleSubmit = () => {
+     logout([]);
+   }
+  const logout = () => {
+    localStorage.removeItem('Authorization')
+    window.location.reload()
+  }
 //----------------------------------------------------------------------------
     return (
         <div>
             <nav>
                 <div className="one">
-                    <a href="/" className="navLinks"><img src={Logo} /></a>
+                    <a href="/" className="navLinks"><img src={Logo} alt="opera house logo"/></a>
                 </div>
 
                 <div className="two">
@@ -61,21 +68,32 @@ function Nav() {
 
                 </div>
 
-                <div className="four">
+
+
+
+<div className="four">
                     <div role="login" className="div-item-nav">
                         <div id="test">
 
-                            <span></span>
-                            <span></span>
-                            {currentUser === false ? (
-                              <span>
-                                < Login />
-                              </span>
-                            ) : (
-                             <span>{message}</span>
-                            )}
+                            <div className="dropdown" style={{ float: 'right' }}>
+                                <div className="navLinks">
+                                    {currentUser === false ? (<span>Login</span>) : (<span>{message}</span>)}
+                                </div>
 
+                                <div className="dropdown-content">
+                                    <span></span>
+                                    <span></span>
+                                    {currentUser === false ? (
+                                        <span>
+                                            < Login />
+                                        </span>
+                                    ) : (
+                                            <span>{message} <button onClick={() => handleSubmit()}>Logout</button></span>
 
+                                        )}
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

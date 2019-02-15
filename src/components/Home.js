@@ -1,6 +1,4 @@
 import React from 'react';
-import Login from './Login';
-import SignUp from './SignUp'
 import './css/menu.scss';
 import Slider from './Slider'
 
@@ -32,8 +30,8 @@ const Home = () => {
         </div>
       </div>
 
-      <div class="title">
-        <p class='opera'>
+      <div className="title">
+        <p className='opera'>
           <span>
             OPERA HOUSE
           </span>

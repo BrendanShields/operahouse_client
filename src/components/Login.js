@@ -42,7 +42,7 @@ function Form() {
 return (
 
     <form onSubmit={handleSubmit}>
-      <label>Login</label>
+    
       <input
         value={email}
         onChange={e => setEmail(e.target.value)}
