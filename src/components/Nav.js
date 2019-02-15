@@ -9,28 +9,28 @@ import Logo from './images/logo.png'
 
 function Nav() {
 
-//  **Format JSON**
-//____________________________________________________________________________
-  const header = {"headers": {"Authorization": localStorage.Authorization}}
+    //  **Format JSON**
+    //____________________________________________________________________________
+    const header = { "headers": { "Authorization": localStorage.Authorization } }
 //----------------------------------------------------------------------------
 //     **Hooks**
 //----------------------------------------------------------------------------
 /* CURRENT USER */  const [currentUser, setCurrentUser] = useState(false)
 /*LOGGED IN MSG */  const [message, setMessage] = useState('')
-//----------------------------------------------------------------------------
-// AXIOS FUNCTIONS
-//----------------------------------------------------------------------------
-// ** AUTHORIZATION **
-  const checkAuthOfApi = async (req, res) => {
-    if (!currentUser) {
-   const response = await axios
-       .get("https://operahouse-server.herokuapp.com/auth", req)
-           setMessage(response.data.msg)
-           setCurrentUser(response.data.user_id)
-           }
+    //----------------------------------------------------------------------------
+    // AXIOS FUNCTIONS
+    //----------------------------------------------------------------------------
+    // ** AUTHORIZATION **
+    const checkAuthOfApi = async (req, res) => {
+        if (!currentUser) {
+            const response = await axios
+                .get("https://operahouse-server.herokuapp.com/auth", req)
+            setMessage(response.data.msg)
+            setCurrentUser(response.data.user_id)
         }
-  checkAuthOfApi(header)
-//----------------------------------------------------------------------------
+    }
+    checkAuthOfApi(header)
+    //----------------------------------------------------------------------------
     return (
         <div>
             <nav>
@@ -65,22 +65,28 @@ function Nav() {
                     <div role="login" className="div-item-nav">
                         <div id="test">
 
-                            <span></span>
-                            <span></span>
-                            {currentUser === false ? (
-                              <span>
-                                < Login />
-                              </span>
-                            ) : (
-                             <span>{message}</span>
-                            )}
+                            <div className="dropdown" style={{ float: 'right' }}>
+                                <div className="navLinks">
+                                    <a href="#"><span className="login"></span> Login</a>
+                                </div>
 
-
+                                <div className="dropdown-content">
+                                    <span></span>
+                                    <span></span>
+                                    {currentUser === false ? (
+                                        <span>
+                                            < Login />
+                                        </span>
+                                    ) : (
+                                            <span>{message}</span>
+                                        )}
+                                    <button onClick={() => localStorage.removeItem('Authorization')}>Logout</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </nav>
-
         </div>
     );
 }
