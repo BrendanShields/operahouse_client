@@ -69,10 +69,7 @@ function Nav() {
 
                 </div>
 
-
-
-
-<div className="four">
+                 <div className="four">
                     <div role="login" className="div-item-nav">
                         <div id="test">
 
@@ -90,7 +87,7 @@ function Nav() {
                                             < Login />
                                         </span>
                                     ) : (
-                                            <span>{message} <button onClick={() => handleSubmit()}>Logout</button></span>
+                                            <span>{message}<button onClick={() => handleSubmit()}>Logout</button></span>
 
                                         )}
                                 </div>
