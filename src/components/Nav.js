@@ -8,26 +8,26 @@ import Logo from './images/logo.png'
 
 function Nav() {
 
-//  **Format JSON**
-//____________________________________________________________________________
-  const header = {"headers": {"Authorization": localStorage.Authorization}}
+    //  **Format JSON**
+    //____________________________________________________________________________
+    const header = { "headers": { "Authorization": localStorage.Authorization } }
 //----------------------------------------------------------------------------
 //     **Hooks**
 //----------------------------------------------------------------------------
 /* CURRENT USER */  const [currentUser, setCurrentUser] = useState(false)
 /*LOGGED IN MSG */  const [message, setMessage] = useState('')
-//----------------------------------------------------------------------------
-// AXIOS FUNCTIONS
-//----------------------------------------------------------------------------
-// ** AUTHORIZATION **
-  const checkAuthOfApi = async (req, res) => {
-    if (!currentUser) {
-   const response = await axios
-       .get("https://operahouse-server.herokuapp.com/auth", req)
-           setMessage(response.data.msg)
-           setCurrentUser(response.data.user_id)
-           }
+    //----------------------------------------------------------------------------
+    // AXIOS FUNCTIONS
+    //----------------------------------------------------------------------------
+    // ** AUTHORIZATION **
+    const checkAuthOfApi = async (req, res) => {
+        if (!currentUser) {
+            const response = await axios
+                .get("https://operahouse-server.herokuapp.com/auth", req)
+            setMessage(response.data.msg)
+            setCurrentUser(response.data.user_id)
         }
+
   checkAuthOfApi(header)
 
   const handleSubmit = () => {
@@ -38,6 +38,7 @@ function Nav() {
     window.location.reload()
   }
 //----------------------------------------------------------------------------
+
     return (
         <div>
             <nav>
@@ -77,6 +78,7 @@ function Nav() {
 
                             <div className="dropdown" style={{ float: 'right' }}>
                                 <div className="navLinks">
+
                                     {currentUser === false ? (<span>Login</span>) : (<span>{message}</span>)}
                                 </div>
 
@@ -91,14 +93,12 @@ function Nav() {
                                             <span>{message} <button onClick={() => handleSubmit()}>Logout</button></span>
 
                                         )}
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </nav>
-
         </div>
     );
 }

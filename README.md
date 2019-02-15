@@ -43,6 +43,6 @@ This project is still a work in progress. We will be adding Sign up functionalit
 
 ### The Dev Dream Team
 
-[Elli](https://github.com/ElliMoty)
-[Jeremy](https://github.com/jeremyetzine)
+[Elli](https://github.com/ElliMoty)  
+[Jeremy](https://github.com/jeremyetzine)  
 [Brendan](https://github.com/BrendanShields)

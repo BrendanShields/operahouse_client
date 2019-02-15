@@ -42,7 +42,7 @@ function Form() {
 return (
 
     <form onSubmit={handleSubmit}>
-    
+
       <input
         value={email}
         onChange={e => setEmail(e.target.value)}
@@ -59,7 +59,7 @@ return (
         name="password"
         required
       />
-<button type="submit">Submit</button>
+<button type="submit" className="submit">Submit</button>
     </form>
   );
 }
