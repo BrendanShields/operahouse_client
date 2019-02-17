@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./css/categories.css";
 import './css/events.scss'
@@ -33,6 +33,7 @@ function Events(props) {
   const getDataFromCat = async () => {
     const response = await axios
       .get(`https://operahouse-server.herokuapp.com/categories.json`);
+    console.log('categories:', response.data);
     setCat(response.data)
   }
 //------------------------------------------------------------------------------
@@ -56,8 +57,6 @@ function Events(props) {
     setSpace(response.data);
   }
 //------------------------------------------------------------------------------
-
-
   return (
     <div>
       <Nav />
@@ -93,7 +92,7 @@ function Events(props) {
             <li>
               <div className="blog-card">
                 <div className="meta">
-                  <div className="photo" style={{backgroundImage: `url(/images/${images[index]})` }}></div>
+                  <div className="photo" style={{ backgroundImage: `url(/images/${images[index]})` }}></div>
 
                   <ul className="details">
                     {dates[index] ? (
@@ -124,6 +123,7 @@ function Events(props) {
                 </div>
               </div>
             </li>
+
 
           )}
 
